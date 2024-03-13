@@ -9,6 +9,8 @@ public class Node {
 
     public Node(int Data) {
         this.Data = Data;
+
+        // Hashwert Inkrement
         this.hash = Integer.hashCode(Data);
         KindLinks = null;
         KindRechts = null;
