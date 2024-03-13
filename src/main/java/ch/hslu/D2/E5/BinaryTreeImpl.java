@@ -71,32 +71,6 @@ public class BinaryTreeImpl implements BinaryTree {
         }
     }
 
-    /*
-    @Override
-    public boolean search(int data) {
-        return searchRecursive(root, data);
-    }
-
-    private boolean searchRecursive(Node current, int data) {
-
-        // Wenn Baum leer ist, dann false
-        if (current == null) {
-            return false;
-        }
-
-        // Wenn data gefunden, dann true
-        if (data == current.getData()) {
-            return true;
-        }
-
-        // Wenn data kleiner ist als der Wert des aktuellen Knotens, dann gehe nach links
-        return data < current.getData()
-                ? searchRecursive(current.getKindLinks(), data)
-                : searchRecursive(current.getKindRechts(), data);
-    }
-
-     */
-
     @Override
     public void delete(int data) {
 
