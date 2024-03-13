@@ -1,5 +1,7 @@
 package ch.hslu.D2.E6;
 
+import java.util.Objects;
+
 public class Node {
 
     private int Data;
@@ -57,4 +59,19 @@ public class Node {
                 ", KindRechts=" + KindRechts +
                 '}';
     }
+
+    /*
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Node node)) return false;
+        return getData() == node.getData() && getHash() == node.getHash() && Objects.equals(getKindLinks(), node.getKindLinks()) && Objects.equals(getKindRechts(), node.getKindRechts());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getData(), getHash(), getKindLinks(), getKindRechts());
+    }
+
+     */
 }
