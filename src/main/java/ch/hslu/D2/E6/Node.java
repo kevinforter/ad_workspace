@@ -65,12 +65,12 @@ public class Node {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Node node)) return false;
-        return getData() == node.getData() && getHash() == node.getHash() && Objects.equals(getKindLinks(), node.getKindLinks()) && Objects.equals(getKindRechts(), node.getKindRechts());
+        return getData() == node.getData() && getHash() == node.getHash());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getData(), getHash(), getKindLinks(), getKindRechts());
+        return Objects.hash(getData(), getHash());
     }
 
      */

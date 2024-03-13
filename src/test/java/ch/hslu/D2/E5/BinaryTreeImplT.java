@@ -1,23 +1,44 @@
 package ch.hslu.D2.E5;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BinaryTreeImplT {
 
+    private BinaryTree bt;
+
+    @BeforeEach
+    public void setUp() {
+        bt = Util.createBinaryTree();
+    }
+
     @Test
-    void insert() {
+    void insertElementToTree_WhenAlreadyExist() {
+
+        //assertTrue(bt.insert(5));
 
     }
 
     @Test
-    public void givenABinaryTree_WhenAddingElements_ThenTreeContainsThoseElements() {
-        BinaryTree bt = Util.createBinaryTree();
+    public void givenABinaryTree_WhenAddingRoot_ThenTreeContainsRootAlready() {
+
+        assertTrue(bt.search(5));
+    }
+
+    @Test
+    public void givenABinaryTree_WhenAddingElement_ThenTreeContainsThisElement() {
 
         assertTrue(bt.search(6));
-        assertTrue(bt.search(4));
+
+    }
+
+    @Test
+    public void givenABinaryTree_WhenAddingElement_ThenTreeContainsNotThisElement() {
+
         assertFalse(bt.search(1));
+
     }
 
     @Test
