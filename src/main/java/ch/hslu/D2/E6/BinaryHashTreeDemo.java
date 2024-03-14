@@ -3,13 +3,13 @@ package ch.hslu.D2.E6;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class BinaryTreeDemo {
+public class BinaryHashTreeDemo {
 
-    private static final Logger LOG = LoggerFactory.getLogger(BinaryTreeDemo.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BinaryHashTreeDemo.class);
 
     public static void main(String[] args) {
 
-        BinaryTree bt = new BinaryTreeImpl();
+        BinaryHashTree bt = new BinaryHashTreeImpl();
 
         bt.insert(5);
         bt.insert(3);
