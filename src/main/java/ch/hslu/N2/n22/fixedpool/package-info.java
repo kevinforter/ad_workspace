@@ -15,6 +15,6 @@
  */
 
 /**
- * Inhalt von N22 - Executor als einfacher Thread Pool - Code Skizze.
+ * Inhalt von N22 - Beispiel zu Threadpool mit fixer Anzahl Worker.
  */
-package ch.hslu.ad.n22.executor.plain;
+package ch.hslu.N2.n22.fixedpool;

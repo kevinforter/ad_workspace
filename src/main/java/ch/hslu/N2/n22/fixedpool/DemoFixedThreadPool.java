@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.n22.executor.virtual;
+package ch.hslu.N2.n22.fixedpool;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -21,17 +21,16 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 /**
- * Demo eines virtuellen ThreadPool Executors. Dieser Executor liefert für jeden
- * neuen Task einen Thread.
+ * Demo eines FixedThreadPool Executors.
  */
-public final class DemoVirtualThreadPool {
+public final class DemoFixedThreadPool {
 
-    private static final Logger LOG = LoggerFactory.getLogger(DemoVirtualThreadPool.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DemoFixedThreadPool.class);
 
     /**
      * Privater Konstruktor.
      */
-    private DemoVirtualThreadPool() {
+    private DemoFixedThreadPool() {
     }
 
     /**
@@ -41,7 +40,8 @@ public final class DemoVirtualThreadPool {
      */
     @SuppressWarnings("deprecation")
     public static void main(String[] args) {
-        try (final ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
+        final int nWorker = 1;
+        try (final ExecutorService executor = Executors.newFixedThreadPool(nWorker)) {
             for (int nTask = 1; nTask <= 4; nTask++) {
                 final char ch = (char) (64 + nTask);
                 final char chStop = 'X';

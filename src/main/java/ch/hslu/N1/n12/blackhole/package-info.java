@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 /**
- * Inhalt von N22 - Beispiel zu virtuellem Threadpool mit beliebiger Anzahl Workers.
+ * Inhalt von N12 - Verklemmungen (Deadlock) am Beispiel schwarzes Loch.
  */
-package ch.hslu.ad.n22.executor.virtual;
+package ch.hslu.ad.n12.blackhole;
