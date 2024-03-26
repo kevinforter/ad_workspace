@@ -15,9 +15,9 @@
  */
 package ch.hslu.ad.n22.executor.plain;
 
-import ch.hslu.ad.n21.buffer.sema.BoundedBuffer;
-import ch.hslu.ad.n21.buffer.sema.Consumer;
-import ch.hslu.ad.n21.buffer.sema.Producer;
+import ch.hslu.N2.n21.buffer.sema.BoundedBuffer;
+import ch.hslu.N2.n21.buffer.sema.Consumer;
+import ch.hslu.N2.n21.buffer.sema.Producer;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import org.slf4j.LoggerFactory;

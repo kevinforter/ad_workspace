@@ -13,57 +13,60 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.n21.buffer.guardedblocks;
+package ch.hslu.N2.n21.buffer.guardedblocks;
 
-import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * Produzent, der eine maximale Anzahl Werte produziert und diese in eine Queue
- * speichert.
+ * Konsument, der soviele Werte aus einer Queue liest, wie er nur kann.
  */
-public final class ProducerWithTimeout implements Runnable {
+public final class Consumer implements Runnable {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ProducerWithTimeout.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Consumer.class);
+
     private final BoundedBuffer<Integer> queue;
-    private final int maxRange;
     private long sum;
+    private Thread runThread;
 
     /**
-     * Erzeugt einen Produzent, der eine bestimmte Anzahl Integer-Werte
-     * produziert. Der Produzent versucht zu speichern, und lässt es bei einem
-     * Timeout bleiben.
+     * Erzeugt einen Konsumenten, der soviel Integer-Werte ausliest, wie er nur
+     * kann.
      *
-     * @param queue Queue zum Speichern der Integer-Werte.
-     * @param max Anzahl Integer-Werte.
+     * @param queue Queue zum Lesen der Integer-Werte.
      */
-    public ProducerWithTimeout(final BoundedBuffer<Integer> queue, final int max) {
+    public Consumer(final BoundedBuffer<Integer> queue) {
         this.queue = queue;
-        this.maxRange = max;
         this.sum = 0;
     }
 
     @Override
     public void run() {
-        for (int i = 0; i < maxRange; i++) {
+        runThread = Thread.currentThread();
+        while (true) {
             try {
-                if (!queue.offer(i, 500)) {
-                    LOG.debug(Thread.currentThread().getName() + " timeout");
-                } else {
-                    sum += i;
-                }
+                sum += queue.remove();
             } catch (InterruptedException ex) {
+                LOG.debug("Consumer interrupted while running - queue.size = {}.", queue.size());
                 return;
             }
         }
     }
 
     /**
-     * Liefert die Summe aller gespeicherter Werte.
+     * Liefert die Summe aller ausgelesener Werte.
      *
      * @return Summe.
      */
     public long getSum() {
-        return sum;
+        if (runThread != null) {
+            try {
+                runThread.join();
+                return sum;
+            } catch (InterruptedException ex) {
+                LOG.debug("Consumer interrupted while waitung for sum...");
+            }
+        }
+        return 0L;
     }
 }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.n21.buffer.sema;
+package ch.hslu.N2.n21.buffer.guardedblocks;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 /**
- * Demonstration des BoundedBuffers mit n Producer und m Consumer.
+ * Demonstration der BoundedBuffer mit n Producer und m Consumer.
  */
 public final class DemoBoundedBuffer {
 
@@ -37,7 +37,7 @@ public final class DemoBoundedBuffer {
      * Main-Demo.
      *
      * @param args not used.
-     * @throws InterruptedException wenn das warten unterbrochen wird.
+     * @throws InterruptedException wenn Thread unterbrochen wird.
      */
     public static void main(final String args[]) throws InterruptedException {
         final Random random = new Random();

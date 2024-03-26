@@ -15,7 +15,7 @@
  */
 package ch.hslu.ad.n22.executor.plain;
 
-import ch.hslu.ad.n21.buffer.guardedblocks.BoundedBuffer;
+import ch.hslu.N2.n21.buffer.guardedblocks.BoundedBuffer;
 import java.util.concurrent.Executor;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;

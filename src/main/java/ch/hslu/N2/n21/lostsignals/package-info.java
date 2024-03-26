@@ -15,6 +15,6 @@
  */
 
 /**
- * Inhalt von N21 - FIFO Queue als Bounded Buffer.
+ * Inhalt von N21 - Beispiel Verlorene Signale.
  */
-package ch.hslu.ad.n21.buffer.guardedblocks;
+package ch.hslu.N2.n21.lostsignals;

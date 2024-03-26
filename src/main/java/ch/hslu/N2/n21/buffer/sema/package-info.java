@@ -15,6 +15,6 @@
  */
 
 /**
- * Inhalt von N21 - Semaphor Code Skizze.
+ * Inhalt von N21 - Bounded Buffer mit Semaphore.
  */
-package ch.hslu.ad.n21.sema;
+package ch.hslu.N2.n21.buffer.sema;

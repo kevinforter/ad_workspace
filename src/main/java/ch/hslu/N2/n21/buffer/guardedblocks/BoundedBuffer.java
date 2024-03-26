@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.n21.buffer.guardedblocks;
+package ch.hslu.N2.n21.buffer.guardedblocks;
 
-import ch.hslu.ad.n21.buffer.Buffer;
+import ch.hslu.N2.n21.buffer.Buffer;
 
 /**
  * Buffer (First In First Out) mit einer begrenzten Kapazität. Der Puffer ist
@@ -23,7 +23,7 @@ import ch.hslu.ad.n21.buffer.Buffer;
  *
  * @param <T> Element Typ.
  */
-public final class BoundedBuffer<T> implements Buffer<T>{
+public final class BoundedBuffer<T> implements Buffer<T> {
 
     private final T[] data;
     private int head;
