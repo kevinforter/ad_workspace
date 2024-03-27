@@ -7,40 +7,30 @@ import static java.util.Objects.hash;
 
 public class HashtabelleImpl implements Hashtabelle {
 
-    private final Integer[] arr;
 
-    public HashtabelleImpl() {
-        this.arr = new Integer[10];
+    private final String[] arr;
+    private static final int TABLE_SIZE = 10;
+    private HashtabelleImpl() {
+        this.arr = new String[TABLE_SIZE];
     }
 
 
     @Override
-    public void insert(int key, Integer value) {
+    public void insert(Integer key, String value) {
         final int index = abs(hash(key) % arr.length);
         arr[index] = value;
     }
 
     @Override
-    public String search(int key) {
+    public String search(Integer key) {
         final int index = abs(hash(key) % arr.length);
-        return arr[index] != null ? arr[index].toString() : null;
+        return arr[index] != null ? arr[index] : null;
     }
 
     @Override
-    public void remove(int key) {
-
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof HashtabelleImpl that)) return false;
-        return Arrays.equals(arr, that.arr);
-    }
-
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(arr);
+    public void remove(Integer key) {
+        final int index = abs(hash(key) % arr.length);
+        arr[index] = null;
     }
 
     @Override
