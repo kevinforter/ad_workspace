@@ -10,7 +10,7 @@ public class HashtabelleImpl implements Hashtabelle {
 
     private final String[] arr;
     private static final int TABLE_SIZE = 10;
-    private HashtabelleImpl() {
+    public HashtabelleImpl() {
         this.arr = new String[TABLE_SIZE];
     }
 
