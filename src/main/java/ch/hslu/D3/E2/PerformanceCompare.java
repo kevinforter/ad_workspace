@@ -2,7 +2,6 @@ package ch.hslu.D3.E2;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
 import java.util.Stack;
 
 public class PerformanceCompare {
