@@ -1,5 +1,8 @@
 package ch.hslu.D3.E2;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class PerformanceCompare {
@@ -22,5 +25,15 @@ public class PerformanceCompare {
         for (String str : arr) {
             stack.push(str);
         }
+    }
+
+    public static void addToDeque(String[] arr) {
+
+        Deque<String> deque = new ArrayDeque<>();
+
+        for (String str : arr) {
+            deque.add(str);
+        }
+
     }
 }
