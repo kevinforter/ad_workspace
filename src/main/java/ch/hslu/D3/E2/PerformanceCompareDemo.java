@@ -8,20 +8,34 @@ public class PerformanceCompareDemo {
 
     public static void main(String[] args) {
 
-        long total = 0;
+        int anzObject = 100000000;
+        long totalArray = 0;
+        long totalStack = 0;
         int iterations = 10;
+        String[] arr = new String[anzObject];
 
         for (int i = 0; i < iterations; i++) {
             long start = System.nanoTime();
 
-            String[] arr = PerformanceCompare.returnArray(100000);
+             arr = PerformanceCompare.returnArray(anzObject);
 
             long end = System.nanoTime();
-            total += end - start;
+            totalArray += end - start;
         }
 
-        long averageTime = total / iterations;
-        LOG.info("Durchschnittliche Messzeit für " + iterations + " Durchläufe: " + averageTime);
+        for (int i = 0; i < iterations; i++) {
+            long start = System.nanoTime();
 
+            PerformanceCompare.addToStack(arr);
+
+            long end = System.nanoTime();
+            totalStack += end - start;
+        }
+
+        long averageTimeArray = totalArray / iterations;
+        long averageTimeStack = totalStack / iterations;
+
+        LOG.info("Durchschnittliche Messzeit für " + iterations + " Durchläufe: " + averageTimeArray);
+        LOG.info("Durchschnittliche Messzeit für " + iterations + " Durchläufe: " + averageTimeStack);
     }
 }

@@ -1,5 +1,7 @@
 package ch.hslu.D3.E2;
 
+import java.util.Stack;
+
 public class PerformanceCompare {
 
     public static String[] returnArray(int anzObject) {
@@ -11,5 +13,14 @@ public class PerformanceCompare {
         }
 
         return arr;
+    }
+
+    public static void addToStack(String[] arr) {
+
+        Stack<String> stack = new Stack<>();
+
+        for (String str : arr) {
+            stack.push(str);
+        }
     }
 }
