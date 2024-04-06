@@ -12,6 +12,7 @@ public class HashtabelleKollisionSondierungDemo {
         hashtable.insert(1, "Element 1");
         hashtable.insert(2, "Element 2");
         hashtable.insert(3, "Element 3");
+        hashtable.insert(3, "Element Duplikat");
 
         LOG.info("SIZE:\t\t\t\t\t" + hashtable.size());
         LOG.info("HASHTABELLE:\t\t\t" + hashtable + "\n");

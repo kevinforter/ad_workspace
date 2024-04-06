@@ -21,11 +21,24 @@ public class HashtabelleKollisionSondierungImpl implements HashtabelleKollisionS
     public void insert(Integer key, String value) {
         // Komprimierung
         final int index = abs(hash(key) % arr.length);
+        // Einfügen
         if (arr[index] == null) {
             arr[index] = value;
             size++;
-        } else if (!arr[index].equals(value)) {
-            throw new IllegalArgumentException("Duplicate value not allowed");
+        } else {
+            // Kollision behandeln
+            int i = index;
+            do {
+                i = (i + 1) % arr.length; // Lineare Sondierung (Nächster freier Platz)
+                if (arr[i] == null) {
+                    arr[i] = value;
+                    size++;
+                    return;
+                }
+            } while (i != index); // Stopp wenn Ende von Array
+        }
+        if (size == arr.length) {
+            throw new IllegalArgumentException("Der Speicher ist voll");
         }
     }
 
