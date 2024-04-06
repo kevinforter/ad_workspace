@@ -1,5 +1,8 @@
 package ch.hslu.D3.E3;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Arrays;
 
 import static java.lang.Math.abs;
@@ -7,6 +10,7 @@ import static java.util.Objects.hash;
 
 public class HashtabelleKollisionSondierungImpl implements HashtabelleKollisionSondierung {
 
+    public static final Logger LOG = LoggerFactory.getLogger(HashtabelleKollisionSondierungImpl.class);
 
     private final String[] arr;
     private int size;
@@ -20,7 +24,7 @@ public class HashtabelleKollisionSondierungImpl implements HashtabelleKollisionS
     @Override
     public void insert(Integer key, String value) {
         // Komprimierung
-        final int index = abs(hash(key) % arr.length);
+        int index = abs(hash(key) % arr.length);
         // Einfügen
         if (arr[index] == null) {
             arr[index] = value;
@@ -38,7 +42,7 @@ public class HashtabelleKollisionSondierungImpl implements HashtabelleKollisionS
             } while (i != index); // Stopp wenn Ende von Array
         }
         if (size == arr.length) {
-            throw new IllegalArgumentException("Der Speicher ist voll");
+            LOG.error("Der Speicher ist voll");
         }
     }
 
@@ -50,7 +54,7 @@ public class HashtabelleKollisionSondierungImpl implements HashtabelleKollisionS
 
     @Override
     public boolean remove(Integer key) {
-        final int index = abs(hash(key) % arr.length);
+        int index = abs(hash(key) % arr.length);
         if (arr[index] != null) {
             arr[index] = null;
             size--;
