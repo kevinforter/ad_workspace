@@ -4,6 +4,8 @@ public interface HashtabelleKollisionSondierung {
 
     void insert(Integer key, String value);
     String search(Integer key);
-    void remove(Integer key);
+    boolean remove(Integer key);
+    int size();
+    boolean isFull();
 
 }
