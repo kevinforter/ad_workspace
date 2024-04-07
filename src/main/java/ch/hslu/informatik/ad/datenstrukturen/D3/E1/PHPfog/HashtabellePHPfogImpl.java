@@ -1,7 +1,6 @@
 // Credits: https://phpfog.com/how-to-create-a-hash-table-in-java-chaining-example/
-package ch.hslu.informatik.ad.datenstrukturen.D3.E3.PHPfog;
+package ch.hslu.informatik.ad.datenstrukturen.D3.E1.PHPfog;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 
 public class HashtabellePHPfogImpl implements HashtabellePHPfog {

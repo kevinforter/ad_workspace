@@ -1,4 +1,4 @@
-package ch.hslu.informatik.ad.datenstrukturen.D3.E3.PHPfog;
+package ch.hslu.informatik.ad.datenstrukturen.D3.E1.PHPfog;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
