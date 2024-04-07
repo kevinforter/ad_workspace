@@ -1,6 +1,8 @@
 // Credit: https://www.geeksforgeeks.org/java-program-to-implement-hashtables-with-linear-probing/
 package ch.hslu.informatik.ad.datenstrukturen.D3.E3.Geeks4Geeks;
 
+import java.util.Arrays;
+
 public class HashtabelleImplG4G implements HashtabelleG4G{
     private int currentSize, maxSize;
     private Integer[] keys;
@@ -98,5 +100,13 @@ public class HashtabelleImplG4G implements HashtabelleG4G{
             insert(tmp1, tmp2);
         }
         currentSize--;
+    }
+
+    @Override
+    public String toString() {
+        return "HashtabelleImplG4G{" +
+                "keys=" + Arrays.toString(keys) +
+                ", value=" + Arrays.toString(value) +
+                '}';
     }
 }
