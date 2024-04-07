@@ -55,10 +55,20 @@ public class HashtabelleKollisionSondierungImpl implements HashtabelleKollisionS
     @Override
     public boolean remove(Integer key) {
         int index = abs(hash(key) % arr.length);
-        if (arr[index] != null) {
+        if (arr[index] != null && arr[index].equals(search(key))) {
             arr[index] = null;
             size--;
             return true;
+        } else {
+            int i = index;
+            do {
+                i = (i + 1) % arr.length; // Lineare Sondierung bis Element gefunden wird
+                if (arr[i] != null && arr[i].equals(search(key))) {
+                    arr[i] = null;
+                    size--;
+                    return true;
+                }
+            } while (i != index);
         }
         return false;
     }

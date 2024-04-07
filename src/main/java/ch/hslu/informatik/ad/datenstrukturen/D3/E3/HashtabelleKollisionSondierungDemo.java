@@ -12,15 +12,15 @@ public class HashtabelleKollisionSondierungDemo {
 
         LOG.info("SIZE:\t\t\t\t\t" + hashtable.size());
         LOG.info("HASHTABELLE:\t\t\t" + hashtable);
-        LOG.info("TABELLE VOLL?:\t\t" + hashtable.isFull() + "\n");
+        LOG.info("TABELLE VOLL?:\t\t\t" + hashtable.isFull() + "\n");
 
-        LOG.info("ELEMENT MIT KEY 2:\t" + hashtable.search(2));
-        LOG.info("LÖSCHEN VON KEY 2:\t" + hashtable.remove(2));
-        LOG.info("ELEMENT MIT KEY 2:\t" +hashtable.search(2) + "\n");
+        LOG.info("ELEMENT MIT KEY 2:\t\t" + hashtable.search(2));
+        LOG.info("LÖSCHEN VON KEY 2:\t\t" + hashtable.remove(2));
+        LOG.info("ELEMENT MIT KEY 2:\t\t" +hashtable.search(2) + "\n");
 
         LOG.info("HASHTABELLE:\t\t\t" + hashtable + "\n");
 
-        LOG.info("TABELLE VOLL?:\t\t" + hashtable.isFull());
+        LOG.info("TABELLE VOLL?:\t\t\t" + hashtable.isFull());
     }
 
     private static HashtabelleKollisionSondierung getHashtabelleKollisionSondierung() {
