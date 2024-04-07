@@ -45,6 +45,17 @@ public class HashTableBucketImpl implements HashTableBucket {
 
     @Override
     public void remove(Integer key) {
+        int index = abs(key.hashCode() % arr.length);
+
+        if (arr[index] != null) {
+            for (HtObj obj : arr[index]) {
+                if (obj.key.equals(key)) {
+                    arr[index].remove(obj);
+                    size--;
+                    break;
+                }
+            }
+        }
     }
 
     @Override

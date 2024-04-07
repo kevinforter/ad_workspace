@@ -35,6 +35,16 @@ public class HashTableBucketDemo {
         LOG.info("ELEMENT MIT KEY 2: " + hashtable.search(2) + "\n");
 
         LOG.info("SIZE: " + hashtable.size());
+        LOG.info("HASHTABELLE:" + hashtable + "\n");
+
+        hashtable.insert(2, "Element 2");
+        LOG.info("SIZE: " + hashtable.size());
+        LOG.info("HASHTABELLE:" + hashtable + "\n");
+
+        LOG.info("ELEMENT MIT KEY 10: " + hashtable.search(10));
+        hashtable.remove(10);
+        LOG.info("ELEMENT MIT KEY 10: " + hashtable.search(10) + "\n");
+        LOG.info("SIZE: " + hashtable.size());
         LOG.info("HASHTABELLE:" + hashtable);
     }
 }
