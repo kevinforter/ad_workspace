@@ -1,13 +1,13 @@
 // Credit: https://www.geeksforgeeks.org/java-program-to-implement-hashtables-with-linear-probing/
 package ch.hslu.informatik.ad.datenstrukturen.D3.E3.Geeks4Geeks;
 
-public class HashtabelleImpl {
+public class HashtabelleImplG4G implements HashtabelleG4G{
     private int currentSize, maxSize;
     private Integer[] keys;
     private String[] value;
 
     // Constructor of this class
-    public HashtabelleImpl(int capacity)
+    public HashtabelleImplG4G(int capacity)
     {
         currentSize = 0;
         maxSize = capacity;
@@ -16,9 +16,11 @@ public class HashtabelleImpl {
     }
 
     // Function to get size of hash table
+    @Override
     public int getSize() { return currentSize; }
 
     // Function to check if hash table is full
+    @Override
     public boolean isFull()
     {
         return currentSize == maxSize;
@@ -31,6 +33,7 @@ public class HashtabelleImpl {
     }
 
     // Function to insert key-value pair
+    @Override
     public void insert(Integer key, String val)
     {
         int tmp = hash(key);
@@ -59,6 +62,7 @@ public class HashtabelleImpl {
     }
 
     // Function to get value for a given key
+    @Override
     public String search(Integer key)
     {
         int i = hash(key);
@@ -71,6 +75,7 @@ public class HashtabelleImpl {
     }
 
     // Function to remove key and its value
+    @Override
     public void remove(Integer key)
     {
         if (search(key) == null) return;
