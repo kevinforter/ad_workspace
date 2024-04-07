@@ -9,7 +9,7 @@ import java.util.List;
 
 import static java.lang.Math.abs;
 
-public class HashTableBucketImpl implements HashTableBucket{
+public class HashTableBucketImpl implements HashTableBucket {
 
     private int size;
     private List<HtObj>[] arr;
@@ -45,7 +45,6 @@ public class HashTableBucketImpl implements HashTableBucket{
 
     @Override
     public void remove(Integer key) {
-
     }
 
     @Override
@@ -68,7 +67,18 @@ public class HashTableBucketImpl implements HashTableBucket{
     }
 
     @Override
-    public boolean isFull() {
-        return size == arr.length;
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\nHashTableBucketImpl{\n");
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != null) {
+                for (HtObj obj : arr[i]) {
+                    sb.append("[Bucket: ").append(i).append(", Key: ").append(obj.key).append(", Value: ").append(obj.value).append("], ");
+                }
+                sb.append("\n");
+            }
+        }
+        sb.append("}");
+        return sb.toString();
     }
 }

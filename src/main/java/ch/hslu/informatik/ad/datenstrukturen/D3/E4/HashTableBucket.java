@@ -6,5 +6,4 @@ public interface HashTableBucket {
     void remove(Integer key);
     String search(Integer key);
     int size();
-    boolean isFull();
 }
