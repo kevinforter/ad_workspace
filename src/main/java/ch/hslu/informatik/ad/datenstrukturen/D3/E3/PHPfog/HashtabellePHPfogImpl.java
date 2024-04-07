@@ -14,11 +14,11 @@ public class HashtabellePHPfogImpl implements HashtabellePHPfog {
         public String value;
     }
 
-    public static final int ARR_SIZE = 128;
+    public static final int ARR_SIZE = 10;
     private LinkedList<HTObject>[] arr = new LinkedList[ARR_SIZE];
 
     // Konstruktor
-    public HashtabellePHPfogImpl(int size) {
+    public HashtabellePHPfogImpl() {
         //init vals in array
         for (int i = 0; i < ARR_SIZE; i++) {
             arr[i] = null;
@@ -112,9 +112,16 @@ public class HashtabellePHPfogImpl implements HashtabellePHPfog {
     }
 
     @Override
-    public String toString() {
-        return "HashtabellePHPfogImpl{" +
-                "arr=" + Arrays.toString(arr) +
-                '}';
+public String toString() {
+    String result = "HashtabellePHPfogImpl{";
+    for (int i = 0; i < ARR_SIZE; i++) {
+        if (arr[i] != null) {
+            for (HTObject item : arr[i]) {
+                result += "[Key: " + item.key + ", Value: " + item.value + "], ";
+            }
+        }
     }
+    result += "}";
+    return result;
+}
 }
