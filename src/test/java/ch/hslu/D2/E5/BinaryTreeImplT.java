@@ -1,6 +1,6 @@
 package ch.hslu.D2.E5;
 
-import ch.hslu.informatik.ad.Datenstrukturen.D2.E5.BinaryTree;
+import ch.hslu.informatik.ad.datenstrukturen.D2.E5.BinaryTree;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

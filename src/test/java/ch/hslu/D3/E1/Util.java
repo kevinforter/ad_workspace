@@ -1,7 +1,7 @@
 package ch.hslu.D3.E1;
 
-import ch.hslu.informatik.ad.Datenstrukturen.D3.E1.Hashtabelle;
-import ch.hslu.informatik.ad.Datenstrukturen.D3.E1.HashtabelleImpl;
+import ch.hslu.informatik.ad.datenstrukturen.D3.E1.Hashtabelle;
+import ch.hslu.informatik.ad.datenstrukturen.D3.E1.HashtabelleImpl;
 
 public class Util {
 
