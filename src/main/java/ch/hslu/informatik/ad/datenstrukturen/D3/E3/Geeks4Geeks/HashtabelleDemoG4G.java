@@ -27,6 +27,9 @@ public class HashtabelleDemoG4G {
         LOG.info("HASHTABELLE:\t\t\t" + hashtable);
         LOG.info("TABELLE VOLL?:\t\t" + hashtable.isFull() + "\n");
 
+        hashtable.insert(10, "Element 10");
+        LOG.info("HASHTABELLE:\t\t\t" + hashtable + "\n");
+
         LOG.info("ELEMENT MIT KEY 2:\t" + hashtable.search(2));
         hashtable.remove(2);
         LOG.info("ELEMENT MIT KEY 2:\t" +hashtable.search(2) + "\n");

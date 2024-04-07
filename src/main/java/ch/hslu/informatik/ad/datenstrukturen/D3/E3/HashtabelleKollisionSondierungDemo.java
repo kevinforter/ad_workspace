@@ -14,6 +14,9 @@ public class HashtabelleKollisionSondierungDemo {
         LOG.info("HASHTABELLE:\t\t\t" + hashtable);
         LOG.info("TABELLE VOLL?:\t\t\t" + hashtable.isFull() + "\n");
 
+        hashtable.insert(10, "Element 10");
+        LOG.info("HASHTABELLE:\t\t\t" + hashtable + "\n");
+
         LOG.info("ELEMENT MIT KEY 2:\t\t" + hashtable.search(2));
         LOG.info("LÖSCHEN VON KEY 2:\t\t" + hashtable.remove(2));
         LOG.info("ELEMENT MIT KEY 2:\t\t" +hashtable.search(2) + "\n");
@@ -34,7 +37,7 @@ public class HashtabelleKollisionSondierungDemo {
         hashtable.insert(7, "Element 7");
         hashtable.insert(8, "Element 8");
         hashtable.insert(9, "Element 9");
-        hashtable.insert(9, "Element 10");
+        hashtable.insert(10, "Element 10");
         return hashtable;
     }
 }
