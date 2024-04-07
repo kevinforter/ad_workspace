@@ -1,5 +1,8 @@
 package ch.hslu.D2.E5;
 
+import ch.hslu.informatik.ad.Datenstrukturen.D2.E5.BinaryTree;
+import ch.hslu.informatik.ad.Datenstrukturen.D2.E5.BinaryTreeImpl;
+
 public class Util {
 
     private Util() {
