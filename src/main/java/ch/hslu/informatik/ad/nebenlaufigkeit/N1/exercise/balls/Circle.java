@@ -222,4 +222,12 @@ public class Circle {
             canvas.erase(this);
         }
     }
+
+    public void fallAndBurst(int screenHeight, int tempo) {
+    if (yPosition + diameter > screenHeight) {
+        makeInvisible();
+    } else {
+        moveVertical(tempo);
+    }
+}
 }

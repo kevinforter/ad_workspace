@@ -53,7 +53,7 @@ public final class Canvas {
      */
     public static Canvas getCanvas() {
         if (canvasSingleton == null) {
-            canvasSingleton = new Canvas("Ball Demo", 600, 400,
+            canvasSingleton = new Canvas("Ball Demo", 1000, 800,
                     Color.white);
         }
         canvasSingleton.setVisible(true);
