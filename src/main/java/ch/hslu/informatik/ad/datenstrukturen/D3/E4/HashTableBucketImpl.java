@@ -1,9 +1,6 @@
+// Credits: https://www.geeksforgeeks.org/implementing-our-own-hash-table-with-separate-chaining-in-java/
 package ch.hslu.informatik.ad.datenstrukturen.D3.E4;
 
-import ch.hslu.informatik.ad.datenstrukturen.D3.E1.PHPfog.HashtabellePHPfogImpl;
-
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 

@@ -39,23 +39,19 @@ public class DemoBalls {
 
         int max = 100;
         int min = 40;
-        int range = max - min + 1;
 
-        int diameter = (int) (Math.random() * range) + min;
-        LOG.info("R: " + diameter);
-        int x = random.nextInt(1000);
-        LOG.info("X: " + x);
-        int y = random.nextInt(800 - diameter);
-        LOG.info("Y: " + y);
-        int randomColor = random.nextInt(5);
+        for (int i = 0; i < 10; i++) {
 
-        Circle circle = new Circle(diameter, x, y, color[randomColor]);
-        System.out.println(diameter);
-        circle.makeVisible();
 
-        for (int i = 0; i < 500; i++) {
+            int diameter = random.nextInt(max - min + 1) + min;
+            int x = random.nextInt(Canvas.getCanvas().getWidth());
+            int y = random.nextInt(Canvas.getCanvas().getHeight() - diameter);
+            int randomColor = random.nextInt(color.length);
+
+            Circle circle = new Circle(diameter, x, y, color[randomColor]);
+            circle.makeVisible();
+
             circle.fallAndBurst(Canvas.getCanvas().getHeight(), random.nextInt(20));
-            LOG.info("Y: " + circle.getY());
         }
     }
 }
