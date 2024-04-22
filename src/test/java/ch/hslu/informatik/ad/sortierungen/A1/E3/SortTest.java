@@ -1,14 +1,19 @@
 package ch.hslu.informatik.ad.sortierungen.A1.E3;
 
-import ch.hslu.informatik.ad.sortierungen.A1.E3.Util;
-
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class SortTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(SortTest.class);
 
     @BeforeEach
     void setUp() {
@@ -41,11 +46,51 @@ class SortTest {
         assertEquals(99, sortedArr[sortedArr.length - 1]);
     }
 
-    @Test
-    void insertionSort2_random() {
+    @RepeatedTest(5)
+    void measureInsertionSort2PerformanceRandomArr() {
 
+        int[] sizes = new int[]{100000, 200000, 400000};
+        for (int size : sizes) {
+            int[] randomArray = Util.genRandomArray(size);
 
+            // Measure performance for random array
+            int[] copyRandom = Arrays.copyOf(randomArray, randomArray.length);
+            long start = System.nanoTime();
+            Sort.insertionSort2(copyRandom);
+            long end = System.nanoTime();
+            LOG.info("Time for random array of size " + size + ": " + (end - start) + " ns");
+        }
+    }
 
+    @RepeatedTest(5)
+    void measureInsertionSort2PerformanceSortedArr() {
+
+        int[] sizes = new int[]{100000, 200000, 400000};
+        for (int size : sizes) {
+            int[] sortedArray = Util.genRandomArraySorted(size);
+
+            // Measure performance for sorted array
+            int[] copySorted = Arrays.copyOf(sortedArray, sortedArray.length);
+            long start = System.nanoTime();
+            Sort.insertionSort2(copySorted);
+            long end = System.nanoTime();
+            LOG.info("Time for sorted array of size " + size + ": " + (end - start) + " ns");
+        }
+    }
+
+    @RepeatedTest(5)
+    void measureInsertionSort2PerformanceReversedArr() {
+        int[] sizes = new int[]{100000, 200000, 400000};
+        for (int size : sizes) {
+            int[] reversedArray = Util.genRandomArraySortedBack(size);
+
+            // Measure performance for reversed array
+            int[] copyReversed = Arrays.copyOf(reversedArray, reversedArray.length);
+            long start = System.nanoTime();
+            Sort.insertionSort2(copyReversed);
+            long end = System.nanoTime();
+            LOG.info("Time for reversed array of size " + size + ": " + (end - start) + " ns");
+        }
     }
 
     @AfterEach
