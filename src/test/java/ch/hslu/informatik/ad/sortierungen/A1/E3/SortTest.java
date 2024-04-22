@@ -27,12 +27,12 @@ class SortTest {
         randomArray100K = Util.genRandomArray(100000);
         randomArray200K = Util.genRandomArray(200000);
         randomArray300K = Util.genRandomArray(300000);
-        sortedArray100K = Util.genRandomArray(100000);
-        sortedArray200K = Util.genRandomArray(200000);
-        sortedArray300K = Util.genRandomArray(300000);
-        reversedArray100K = Util.genRandomArray(100000);
-        reversedArray200K = Util.genRandomArray(200000);
-        reversedArray300K = Util.genRandomArray(300000);
+        sortedArray100K = Util.genArraySorted(100000);
+        sortedArray200K = Util.genArraySorted(200000);
+        sortedArray300K = Util.genArraySorted(300000);
+        reversedArray100K = Util.genArraySortedReverse(100000);
+        reversedArray200K = Util.genArraySortedReverse(200000);
+        reversedArray300K = Util.genArraySortedReverse(300000);
     }
 
     @Test
@@ -67,10 +67,10 @@ class SortTest {
 
         // Measure performance for random array
         int[] copyRandom = Arrays.copyOf(randomArray100K, randomArray100K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort2(copyRandom);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for random array of size " + randomArray100K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for random array of size " + randomArray100K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -78,10 +78,10 @@ class SortTest {
 
         // Measure performance for random array
         int[] copyRandom = Arrays.copyOf(randomArray200K, randomArray200K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort2(copyRandom);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for random array of size " + randomArray200K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for random array of size " + randomArray200K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -89,10 +89,10 @@ class SortTest {
 
         // Measure performance for random array
         int[] copyRandom = Arrays.copyOf(randomArray300K, randomArray300K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort2(copyRandom);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for random array of size " + randomArray300K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for random array of size " + randomArray300K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -100,10 +100,10 @@ class SortTest {
 
         // Measure performance for sorted array
         int[] copySorted = Arrays.copyOf(sortedArray100K, sortedArray100K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort2(copySorted);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for sorted array of size " + sortedArray100K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for sorted array of size " + sortedArray100K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -111,10 +111,10 @@ class SortTest {
 
         // Measure performance for sorted array
         int[] copySorted = Arrays.copyOf(sortedArray200K, sortedArray200K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort2(copySorted);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for sorted array of size " + sortedArray200K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for sorted array of size " + sortedArray200K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -122,10 +122,10 @@ class SortTest {
 
         // Measure performance for sorted array
         int[] copySorted = Arrays.copyOf(sortedArray300K, sortedArray300K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort2(copySorted);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for sorted array of size " + sortedArray300K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for sorted array of size " + sortedArray300K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -133,10 +133,10 @@ class SortTest {
 
         // Measure performance for reversed array
         int[] copyReversed = Arrays.copyOf(reversedArray100K, reversedArray100K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort2(copyReversed);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for reversed array of size " + reversedArray100K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for reversed array of size " + reversedArray100K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -144,10 +144,10 @@ class SortTest {
 
         // Measure performance for reversed array
         int[] copyReversed = Arrays.copyOf(reversedArray200K, reversedArray200K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort2(copyReversed);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for reversed array of size " + reversedArray200K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for reversed array of size " + reversedArray200K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -155,10 +155,10 @@ class SortTest {
 
         // Measure performance for reversed array
         int[] copyReversed = Arrays.copyOf(reversedArray300K, reversedArray300K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort2(copyReversed);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for reversed array of size " + reversedArray300K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for reversed array of size " + reversedArray300K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -166,10 +166,10 @@ class SortTest {
 
         // Measure performance for random array
         int[] copyRandom = Arrays.copyOf(randomArray100K, randomArray100K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort3(copyRandom);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for random array of size " + randomArray100K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for random array of size " + randomArray100K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -177,10 +177,10 @@ class SortTest {
 
         // Measure performance for random array
         int[] copyRandom = Arrays.copyOf(randomArray200K, randomArray200K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort3(copyRandom);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for random array of size " + randomArray200K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for random array of size " + randomArray200K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -188,10 +188,10 @@ class SortTest {
 
         // Measure performance for random array
         int[] copyRandom = Arrays.copyOf(randomArray300K, randomArray300K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort3(copyRandom);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for random array of size " + randomArray300K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for random array of size " + randomArray300K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -199,10 +199,10 @@ class SortTest {
 
         // Measure performance for sorted array
         int[] copySorted = Arrays.copyOf(sortedArray100K, sortedArray100K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort3(copySorted);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for sorted array of size " + sortedArray100K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for sorted array of size " + sortedArray100K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -210,10 +210,10 @@ class SortTest {
 
         // Measure performance for sorted array
         int[] copySorted = Arrays.copyOf(sortedArray200K, sortedArray200K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort3(copySorted);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for sorted array of size " + sortedArray200K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for sorted array of size " + sortedArray200K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -221,10 +221,10 @@ class SortTest {
 
         // Measure performance for sorted array
         int[] copySorted = Arrays.copyOf(sortedArray300K, sortedArray300K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort3(copySorted);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for sorted array of size " + sortedArray300K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for sorted array of size " + sortedArray300K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -232,10 +232,10 @@ class SortTest {
 
         // Measure performance for reversed array
         int[] copyReversed = Arrays.copyOf(reversedArray100K, reversedArray100K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort3(copyReversed);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for reversed array of size " + reversedArray100K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for reversed array of size " + reversedArray100K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -243,10 +243,10 @@ class SortTest {
 
         // Measure performance for reversed array
         int[] copyReversed = Arrays.copyOf(reversedArray200K, reversedArray200K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort3(copyReversed);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for reversed array of size " + reversedArray200K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for reversed array of size " + reversedArray200K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
@@ -254,10 +254,10 @@ class SortTest {
 
         // Measure performance for reversed array
         int[] copyReversed = Arrays.copyOf(reversedArray300K, reversedArray300K.length);
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         Sort.insertionSort3(copyReversed);
-        long end = System.currentTimeMillis();
-        LOG.info("Time for reversed array of size " + reversedArray300K.length + ": " + (end - start) + " ms");
+        long end = System.nanoTime();
+        LOG.info("Time for reversed array of size " + reversedArray300K.length + ": " + (end - start) + " ns");
     }
 
     @AfterEach

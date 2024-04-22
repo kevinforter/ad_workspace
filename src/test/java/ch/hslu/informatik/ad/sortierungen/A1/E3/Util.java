@@ -12,46 +12,54 @@ public class Util {
 
         // Fill the array with random numbers between 1 and 100
         for (int i = 0; i < randomArr.length; i++) {
-            randomArr[i] = random.nextInt(100) + 1;
+            randomArr[i] = random.nextInt(1000000) + 1;
         }
 
         return randomArr;
     }
 
-    public static int[] genRandomArraySorted(int n) {
+    public static int[] genArraySorted(int n) {
 
-        Random random = new Random();
-        int[] randomArr = new int[n];
+        int[] sortedArr = new int[n];
 
         // Fill the array with random numbers between 1 and 100
-        for (int i = 0; i < randomArr.length; i++) {
-            randomArr[i] = random.nextInt(100) + 1;
+        for (int i = 0; i < sortedArr.length; i++) {
+            sortedArr[i] = i + 1;
         }
-        Arrays.sort(randomArr);
+        Arrays.sort(sortedArr);
 
-        return randomArr;
+        return sortedArr;
     }
 
-    public static int[] genRandomArraySortedBack(int n) {
+    public static int[] genArraySortedReverse(int n) {
 
-        Random random = new Random();
-        int[] randomArr = new int[n];
+        int[] reversedArr = new int[n];
 
         // Fill the array with random numbers between 1 and 100
-        for (int i = 0; i < randomArr.length; i++) {
-            randomArr[i] = random.nextInt(100) + 1;
+        for (int i = 0; i < reversedArr.length; i++) {
+            reversedArr[i] = i + 1;
         }
+        Arrays.sort(reversedArr);
 
-        // Sort the array in ascending order
-        Arrays.sort(randomArr);
-
-        // Reverse the array to get it in descending order
-        for (int i = 0; i < randomArr.length / 2; i++) {
-            int temp = randomArr[i];
-            randomArr[i] = randomArr[randomArr.length - 1 - i];
-            randomArr[randomArr.length - 1 - i] = temp;
-        }
-
-        return randomArr;
+        return reverseArray(reversedArr);
     }
+
+    private static int[] reverseArray(int[] arr) {
+        int start = 0; // Index from the beginning
+        int end = arr.length - 1; // Index from the end
+
+        while (start < end) {
+            // Swap elements at start and end indices
+            int temp = arr[start]; // Temporary storage
+            arr[start] = arr[end]; // Swap
+            arr[end] = temp; // Swap
+
+            // Move towards the center
+            start++;
+            end--;
+        }
+
+        return arr; // Return the reversed array
+    }
+
 }
