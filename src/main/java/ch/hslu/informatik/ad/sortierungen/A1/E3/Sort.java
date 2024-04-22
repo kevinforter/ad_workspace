@@ -8,9 +8,6 @@ public class Sort {
 
     private static final Logger LOG = LoggerFactory.getLogger(Sort.class);
 
-    public Sort() {
-    }
-
     public static int[] insertionSort2(final int[] a) {
         int elt;
         int j;
@@ -28,15 +25,15 @@ public class Sort {
     }
 
     public static int[] insertionSort3(final int[] a) {
-    for (int i = 1; i < a.length; i++) {
-        int elt = a[i];
-        int insertLocation = Arrays.binarySearch(a, 0, i, elt);
-        if (insertLocation < 0) {
-            insertLocation = -(insertLocation + 1);
+        for (int i = 1; i < a.length; i++) {
+            int elt = a[i];
+            int insertLocation = Arrays.binarySearch(a, 0, i, elt);
+            if (insertLocation < 0) {
+                insertLocation = -(insertLocation + 1);
+            }
+            System.arraycopy(a, insertLocation, a, insertLocation + 1, i - insertLocation);
+            a[insertLocation] = elt;
         }
-        System.arraycopy(a, insertLocation, a, insertLocation + 1, i - insertLocation);
-        a[insertLocation] = elt;
+        return a;
     }
-    return a;
-}
 }
