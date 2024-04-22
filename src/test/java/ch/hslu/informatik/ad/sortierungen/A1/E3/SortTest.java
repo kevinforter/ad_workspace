@@ -1,9 +1,6 @@
 package ch.hslu.informatik.ad.sortierungen.A1.E3;
 
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,8 +12,27 @@ class SortTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(SortTest.class);
 
-    @BeforeEach
-    void setUp() {
+    static int[] randomArray100K;
+    static int[] randomArray200K;
+    static int[] randomArray300K;
+    static int[] sortedArray100K;
+    static int[] sortedArray200K;
+    static int[] sortedArray300K;
+    static int[] reversedArray100K;
+    static int[] reversedArray200K;
+    static int[] reversedArray300K;
+
+    @BeforeAll
+    static void setUp() {
+        randomArray100K = Util.genRandomArray(100000);
+        randomArray200K = Util.genRandomArray(200000);
+        randomArray300K = Util.genRandomArray(300000);
+        sortedArray100K = Util.genRandomArray(100000);
+        sortedArray200K = Util.genRandomArray(200000);
+        sortedArray300K = Util.genRandomArray(300000);
+        reversedArray100K = Util.genRandomArray(100000);
+        reversedArray200K = Util.genRandomArray(200000);
+        reversedArray300K = Util.genRandomArray(300000);
     }
 
     @Test
@@ -47,50 +63,102 @@ class SortTest {
     }
 
     @RepeatedTest(5)
-    void measureInsertionSort2PerformanceRandomArr() {
+    void measureInsertionSort2PerformanceRandomArr100K() {
 
-        int[] sizes = new int[]{100000, 200000, 400000};
-        for (int size : sizes) {
-            int[] randomArray = Util.genRandomArray(size);
-
-            // Measure performance for random array
-            int[] copyRandom = Arrays.copyOf(randomArray, randomArray.length);
-            long start = System.nanoTime();
-            Sort.insertionSort2(copyRandom);
-            long end = System.nanoTime();
-            LOG.info("Time for random array of size " + size + ": " + (end - start) + " ns");
-        }
+        // Measure performance for random array
+        int[] copyRandom = Arrays.copyOf(randomArray100K, randomArray100K.length);
+        long start = System.nanoTime();
+        Sort.insertionSort2(copyRandom);
+        long end = System.nanoTime();
+        LOG.info("Time for random array of size " + randomArray100K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
-    void measureInsertionSort2PerformanceSortedArr() {
+    void measureInsertionSort2PerformanceRandomArr200K() {
 
-        int[] sizes = new int[]{100000, 200000, 400000};
-        for (int size : sizes) {
-            int[] sortedArray = Util.genRandomArraySorted(size);
-
-            // Measure performance for sorted array
-            int[] copySorted = Arrays.copyOf(sortedArray, sortedArray.length);
-            long start = System.nanoTime();
-            Sort.insertionSort2(copySorted);
-            long end = System.nanoTime();
-            LOG.info("Time for sorted array of size " + size + ": " + (end - start) + " ns");
-        }
+        // Measure performance for random array
+        int[] copyRandom = Arrays.copyOf(randomArray200K, randomArray200K.length);
+        long start = System.nanoTime();
+        Sort.insertionSort2(copyRandom);
+        long end = System.nanoTime();
+        LOG.info("Time for random array of size " + randomArray200K.length + ": " + (end - start) + " ns");
     }
 
     @RepeatedTest(5)
-    void measureInsertionSort2PerformanceReversedArr() {
-        int[] sizes = new int[]{100000, 200000, 400000};
-        for (int size : sizes) {
-            int[] reversedArray = Util.genRandomArraySortedBack(size);
+    void measureInsertionSort2PerformanceRandomArr300K() {
 
-            // Measure performance for reversed array
-            int[] copyReversed = Arrays.copyOf(reversedArray, reversedArray.length);
-            long start = System.nanoTime();
-            Sort.insertionSort2(copyReversed);
-            long end = System.nanoTime();
-            LOG.info("Time for reversed array of size " + size + ": " + (end - start) + " ns");
-        }
+        // Measure performance for random array
+        int[] copyRandom = Arrays.copyOf(randomArray300K, randomArray300K.length);
+        long start = System.nanoTime();
+        Sort.insertionSort2(copyRandom);
+        long end = System.nanoTime();
+        LOG.info("Time for random array of size " + randomArray300K.length + ": " + (end - start) + " ns");
+    }
+
+    @RepeatedTest(5)
+    void measureInsertionSort2PerformanceSortedArr100K() {
+
+        // Measure performance for sorted array
+        int[] copySorted = Arrays.copyOf(sortedArray100K, sortedArray100K.length);
+        long start = System.nanoTime();
+        Sort.insertionSort2(copySorted);
+        long end = System.nanoTime();
+        LOG.info("Time for sorted array of size " + sortedArray100K.length + ": " + (end - start) + " ns");
+    }
+
+    @RepeatedTest(5)
+    void measureInsertionSort2PerformanceSortedArr200K() {
+
+        // Measure performance for sorted array
+        int[] copySorted = Arrays.copyOf(sortedArray200K, sortedArray200K.length);
+        long start = System.nanoTime();
+        Sort.insertionSort2(copySorted);
+        long end = System.nanoTime();
+        LOG.info("Time for sorted array of size " + sortedArray200K.length + ": " + (end - start) + " ns");
+    }
+
+    @RepeatedTest(5)
+    void measureInsertionSort2PerformanceSortedArr300K() {
+
+        // Measure performance for sorted array
+        int[] copySorted = Arrays.copyOf(sortedArray300K, sortedArray300K.length);
+        long start = System.nanoTime();
+        Sort.insertionSort2(copySorted);
+        long end = System.nanoTime();
+        LOG.info("Time for sorted array of size " + sortedArray300K.length + ": " + (end - start) + " ns");
+    }
+
+    @RepeatedTest(5)
+    void measureInsertionSort2PerformanceReversedArr100K() {
+
+        // Measure performance for reversed array
+        int[] copyReversed = Arrays.copyOf(reversedArray100K, reversedArray100K.length);
+        long start = System.nanoTime();
+        Sort.insertionSort2(copyReversed);
+        long end = System.nanoTime();
+        LOG.info("Time for reversed array of size " + reversedArray100K.length + ": " + (end - start) + " ns");
+    }
+
+    @RepeatedTest(5)
+    void measureInsertionSort2PerformanceReversedArr200K() {
+
+        // Measure performance for reversed array
+        int[] copyReversed = Arrays.copyOf(reversedArray200K, reversedArray200K.length);
+        long start = System.nanoTime();
+        Sort.insertionSort2(copyReversed);
+        long end = System.nanoTime();
+        LOG.info("Time for reversed array of size " + reversedArray200K.length + ": " + (end - start) + " ns");
+    }
+
+    @RepeatedTest(5)
+    void measureInsertionSort2PerformanceReversedArr300K() {
+
+        // Measure performance for reversed array
+        int[] copyReversed = Arrays.copyOf(reversedArray300K, reversedArray300K.length);
+        long start = System.nanoTime();
+        Sort.insertionSort2(copyReversed);
+        long end = System.nanoTime();
+        LOG.info("Time for reversed array of size " + reversedArray300K.length + ": " + (end - start) + " ns");
     }
 
     @AfterEach
