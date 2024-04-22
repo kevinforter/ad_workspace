@@ -1,5 +1,7 @@
 package ch.hslu.informatik.ad.sortierungen.A1.E3;
 
+import ch.hslu.informatik.ad.sortierungen.A1.E3.Util;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,6 +39,13 @@ class SortTest {
 
         int[] sortedArr = Sort.insertionSort2(unsortArr);
         assertEquals(99, sortedArr[sortedArr.length - 1]);
+    }
+
+    @Test
+    void insertionSort2_random() {
+
+
+
     }
 
     @AfterEach
