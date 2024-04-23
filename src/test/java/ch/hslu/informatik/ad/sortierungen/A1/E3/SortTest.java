@@ -36,6 +36,13 @@ class SortTest {
     }
 
     @Test
+    void selectSort() {
+        int[] unsortArr = new int[]{19, 75, 67, 21, 9};
+
+        Sort.selectionSort(unsortArr);
+    }
+
+    @Test
     void insertionSort2_return() {
 
         int[] unsortArr = new int[]{19, 75, 67, 21, 9};

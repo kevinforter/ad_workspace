@@ -36,4 +36,30 @@ public class Sort {
         }
         return a;
     }
+
+    public static void selectionSort(final int[] a) {
+        int elt;
+        int currentSmallestNumber;
+        int currentSmallestNumberIndex = 0;
+
+        long start = System.nanoTime();
+        for (int i = 0; i < a.length; i++) {
+            elt = a[i];
+            currentSmallestNumber = a[i];
+            for (int j = i + 1; j < a.length; j++) {
+                if (a[j] < currentSmallestNumber) {
+                    currentSmallestNumber = a[j];
+                    currentSmallestNumberIndex = j;
+                }
+                if (j == a.length-1) {
+                    a[currentSmallestNumberIndex] = elt;
+                }
+            }
+            a[i] = currentSmallestNumber;
+        }
+        long end = System.nanoTime();
+        long sum = end - start;
+        LOG.info("Gesamte Zeit: " + sum);
+        LOG.info(Arrays.toString(a));
+    }
 }
