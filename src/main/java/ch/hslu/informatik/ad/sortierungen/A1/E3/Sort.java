@@ -35,14 +35,17 @@ public class Sort {
      * @param a Zu sortierendes Array.
      */
     public static int[] insertionSort3(final int[] a) {
-        for (int i = 0; i < a.length; i++) {
+        for (int i = 1; i < a.length; i++) {
             int elt = a[i];
-            int insertLocation = Arrays.binarySearch(a, 0, i, elt);
-            if (insertLocation < 0) {
-                insertLocation = -(insertLocation + 1);
-            }
-            System.arraycopy(a, insertLocation, a, insertLocation + 1, i - insertLocation);
-            a[insertLocation] = elt;
+
+            // Ort zum Einfügen mit BinarySearch suchen
+            int j = Math.abs(Arrays.binarySearch(a, 0, i, elt) + 1);
+
+            // Nach rechts verschieben
+            System.arraycopy(a, j, a, j + 1, i - j);
+
+            // Element in Array einfügen
+            a[j] = elt;
         }
         return a;
     }
