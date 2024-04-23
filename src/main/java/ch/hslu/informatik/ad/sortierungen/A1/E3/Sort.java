@@ -8,10 +8,15 @@ public class Sort {
 
     private static final Logger LOG = LoggerFactory.getLogger(Sort.class);
 
+    /**
+     * Sortiert das int-Array aufsteigend
+     *
+     * @param a Zu sortierendes Array.
+     */
     public static int[] insertionSort2(final int[] a) {
         int elt;
         int j;
-        for (int i = 1; i < a.length; i++) {
+        for (int i = 0; i < a.length; i++) {
             elt = a[i];                         // next elt for insert
             //a[0] = elt;                       // dummy-element (for what)
             j = i;                              // a[1]..a[j-1] already sorted
@@ -24,8 +29,13 @@ public class Sort {
         return a;                               // a[1]...a[j] sorted
     }
 
+    /**
+     * Sortiert das int-Array aufsteigend Binär
+     *
+     * @param a Zu sortierendes Array.
+     */
     public static int[] insertionSort3(final int[] a) {
-        for (int i = 1; i < a.length; i++) {
+        for (int i = 0; i < a.length; i++) {
             int elt = a[i];
             int insertLocation = Arrays.binarySearch(a, 0, i, elt);
             if (insertLocation < 0) {
@@ -37,6 +47,11 @@ public class Sort {
         return a;
     }
 
+    /**
+     * Sortiert das int-Array aufsteigend
+     *
+     * @param a Zu sortierendes Array.
+     */
     public static int[] selectionSort(final int[] a) {
         for (int i = 0; i < a.length; i++) {
             int elt = a[i];
