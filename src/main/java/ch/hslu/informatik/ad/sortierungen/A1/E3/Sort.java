@@ -30,7 +30,7 @@ public class Sort {
     }
 
     /**
-     * Sortiert das int-Array aufsteigend Binär
+     * Sortiert das int-Array aufsteigend mit Binär-Suche
      *
      * @param a Zu sortierendes Array.
      */
@@ -72,6 +72,11 @@ public class Sort {
         return a;
     }
 
+    /**
+     * Sortiert das int-Array aufsteigend
+     *
+     * @param a Zu sortierendes Array.
+     */
     public static int[] bubbleSort(final int[] a) {
         // Anzahl Elemente im Array abarbeiten (-1 weil Anz Vergleiche eins weniger als Elemente ist)
         for (int i = 0; i < a.length - 1; i++) {
