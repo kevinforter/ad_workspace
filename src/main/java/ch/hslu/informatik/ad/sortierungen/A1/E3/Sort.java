@@ -95,4 +95,30 @@ public class Sort {
         }
         return a;
     }
+
+    /**
+     * Sortiert das int-Array aufsteigend
+     *
+     * @param a Zu sortierendes Array.
+     */
+    public static int[] bubbleSort2(final int[] a) {
+        // Anzahl Elemente im Array abarbeiten (-1 weil Anz Vergleiche eins weniger als Elemente ist)
+        for (int i = 0; i < a.length - 1; i++) {
+            boolean swapped = false;
+            // Start immer beim ersten Element (j = 0)
+            // -i weil rechter Teil immer sortiert ist
+            for (int j = 0; j < a.length -i - 1; j++) {
+                if (a[j] > a[j + 1]) {
+
+                    // Tausch von a[j] und a[j+1]
+                    int temp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
+                }
+            }
+            // Wenn nichts getauscht raus aus loop
+            if (!swapped) break;
+        }
+        return a;
+    }
 }
