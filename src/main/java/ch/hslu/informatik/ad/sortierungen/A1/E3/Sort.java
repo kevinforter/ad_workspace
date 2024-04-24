@@ -12,6 +12,7 @@ public class Sort {
      * Sortiert das int-Array aufsteigend
      *
      * @param a Zu sortierendes Array.
+     * @return sortiertes Array
      */
     public static int[] insertionSort2(final int[] a) {
         int elt;
@@ -32,7 +33,9 @@ public class Sort {
     /**
      * Sortiert das int-Array aufsteigend mit Binär-Suche
      *
+     * @link <a href="https://www.geeksforgeeks.org/java-program-for-binary-insertion-sort/">Binary Insertion sort</a>
      * @param a Zu sortierendes Array.
+     * @return sortiertes Array
      */
     public static int[] insertionSort3(final int[] a) {
         for (int i = 1; i < a.length; i++) {
@@ -54,6 +57,7 @@ public class Sort {
      * Sortiert das int-Array aufsteigend
      *
      * @param a Zu sortierendes Array.
+     * @return sortiertes Array
      */
     public static int[] selectionSort(final int[] a) {
         for (int i = 0; i < a.length; i++) {
@@ -75,7 +79,9 @@ public class Sort {
     /**
      * Sortiert das int-Array aufsteigend
      *
+     * @link <a href="https://www.geeksforgeeks.org/java-program-for-bubble-sort/">Bubble Sort</a>
      * @param a Zu sortierendes Array.
+     * @return sortiertes Array
      */
     public static int[] bubbleSort(final int[] a) {
         // Anzahl Elemente im Array abarbeiten (-1 weil Anz Vergleiche eins weniger als Elemente ist)
@@ -99,7 +105,9 @@ public class Sort {
     /**
      * Sortiert das int-Array aufsteigend
      *
+     * @link <a href="https://www.geeksforgeeks.org/bubble-sort/">Bubble Sort with check</a>
      * @param a Zu sortierendes Array.
+     * @return sortiertes Array
      */
     public static int[] bubbleSort2(final int[] a) {
         // Anzahl Elemente im Array abarbeiten (-1 weil Anz Vergleiche eins weniger als Elemente ist)
