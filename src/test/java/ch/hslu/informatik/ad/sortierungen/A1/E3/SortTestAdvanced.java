@@ -44,8 +44,12 @@ public class SortTestAdvanced {
     }
 
     static Stream<Arguments> provideArrays() {
+        int max = 10;
+        int min = 1;
+        int range = max - min + 1;
+
         return Stream.of(
-                Arguments.of(Util.genRandomArray(5))
+                Arguments.of(Util.genRandomArray((int)(Math.random() * range) + min))
         );
     }
 }
