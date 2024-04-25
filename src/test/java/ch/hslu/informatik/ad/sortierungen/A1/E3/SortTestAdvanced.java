@@ -1,11 +1,9 @@
 package ch.hslu.informatik.ad.sortierungen.A1.E3;
 
-import org.junit.Ignore;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,12 +28,15 @@ public class SortTestAdvanced {
 
     @ParameterizedTest
     @MethodSource("provideArrays")
-    void test_return(int[] unsortArr) {
+    void test_return(int[] a) {
+
+        int[] unsortArr = a;
+        Arrays.sort(a);
 
         long start = System.nanoTime();
         int[] sortedArr = Sort.bubbleSort(unsortArr);
         long end = System.nanoTime();
-        assertEquals(5, sortedArr.length);
+        assertArrayEquals(a, sortedArr, "Array didn't sort properly");
 
         long time = end - start;
         LOG.info("Time for function: " + time + " ns");
@@ -44,7 +45,7 @@ public class SortTestAdvanced {
 
     static Stream<Arguments> provideArrays() {
         return Stream.of(
-                Arguments.of(new int[]{19, 75, 67, 21, 9})
+                Arguments.of(Util.genRandomArray(5))
         );
     }
 }
