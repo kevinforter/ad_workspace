@@ -32,9 +32,13 @@ public class SortTestAdvanced {
     @MethodSource("provideArrays")
     void test_return(int[] unsortArr) {
 
+        long start = System.nanoTime();
         int[] sortedArr = Sort.bubbleSort(unsortArr);
+        long end = System.nanoTime();
         assertEquals(5, sortedArr.length);
 
+        long time = end - start;
+        LOG.info("Time for function: " + time + " ns");
         LOG.info(Arrays.toString(sortedArr));
     }
 
