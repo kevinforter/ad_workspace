@@ -41,6 +41,8 @@ public class SortTestAdvanced {
         long time = end - start;
         LOG.info("Time for function: " + time + " ns");
         LOG.info(Arrays.toString(sortedArr));
+
+        printMdTable(time, 10000);
     }
 
     static Stream<Arguments> provideArrays() {
@@ -51,5 +53,17 @@ public class SortTestAdvanced {
         return Stream.of(
                 Arguments.of(Util.genRandomArray((int)(Math.random() * range) + min))
         );
+    }
+
+    static void printMdTable(long time, int n) {
+        System.out.printf("---------------------------------------%n");
+        System.out.printf("            Table with Time            %n");
+        System.out.printf("---------------------------------------%n");
+        System.out.printf("| %-11s | %-8s | %10s |%n", "TEST", "n-ARRAY", "TIME (ns)");
+        System.out.printf("---------------------------------------%n");
+
+        System.out.printf("| %-11s | %-8s | %10s |%n", "Bubble Sort", n / 1000 + " k" ,  time);
+
+        System.out.printf("---------------------------------------%n");
     }
 }
