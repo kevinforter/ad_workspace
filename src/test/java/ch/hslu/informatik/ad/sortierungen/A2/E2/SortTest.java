@@ -35,6 +35,13 @@ class SortTest {
         LOG.info("Array before sort: " + Arrays.toString(a));
         Sort.quickSort(a, 0, 9);
         LOG.info("Array after sort: " + Arrays.toString(a));
+
+        char[] excpectedArr = new char[]{'a', 'b', 'c', 'h', 'i', 'j', 'p', 'r', 't', 'z'};
+
+        assertAll(
+                () -> assertNotNull(a, "Array shouldn't be empty"),
+                () -> assertArrayEquals(excpectedArr, a, "Array not sorted")
+        );
     }
 
     @ParameterizedTest
@@ -44,13 +51,19 @@ class SortTest {
         LOG.info("Array before sort: " + Arrays.toString(a));
         Sort.quickSort(a);
         LOG.info("Array after sort: " + Arrays.toString(a));
+        char[] excpectedArr = new char[]{'a', 'b', 'c', 'h', 'i', 'j', 'p', 'r', 't', 'z'};
+
+        assertAll(
+                () -> assertNotNull(a, "Array shouldn't be empty"),
+                () -> assertArrayEquals(excpectedArr, a, "Array not sorted")
+        );
     }
 
     static Stream<Arguments> provideChars() {
-    return Stream.of(
-        Arguments.of(new char[]{'a', 'c', 'h', 'r', 't', 'j', 'b', 'i', 'z', 'p'})
-        // Add more char arrays if needed
-    );
-}
+        return Stream.of(
+                Arguments.of(new char[]{'a', 'c', 'h', 'r', 't', 'j', 'b', 'i', 'z', 'p'})
+                // Add more char arrays if needed
+        );
+    }
 
 }
