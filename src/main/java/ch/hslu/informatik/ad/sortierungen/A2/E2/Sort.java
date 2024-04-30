@@ -171,8 +171,8 @@ public class Sort {
     }
 
     public static void quickSort(final char[] a) {
-        int up = a[0];
-        int down = a[a.length - 2];
+        int up = 0;
+        int down = a.length - 2;
         char t = a[a.length - 1];
         boolean allChecked = false;
         do {
@@ -190,8 +190,8 @@ public class Sort {
                 allChecked = true; // Austauschen beendet
             }
         } while (!allChecked);
-        exchange(a, up, a.length - 2); // Trennelement an endgültige Position (a[up])
-        if (a[0] < (up - 1)) quickSort(a, a[0], (up - 1)); // linke Hälfte
-        if ((up + 1) < a.length - 2) quickSort(a, (up + 1), a.length - 2); // rechte Hälfte, ohne T’Elt.
+        exchange(a, up, a.length - 1); // Trennelement an endgültige Position (a[up])
+        if (0 < (up - 1)) quickSort(a, 0, (up - 1)); // linke Hälfte
+        if ((up + 1) < a.length - 1) quickSort(a, (up + 1), a.length - 1); // rechte Hälfte, ohne T’Elt.
     }
 }
