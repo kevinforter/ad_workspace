@@ -169,4 +169,29 @@ public class Sort {
         if (left < (up - 1)) quickSort(a, left, (up - 1)); // linke Hälfte
         if ((up + 1) < right) quickSort(a, (up + 1), right); // rechte Hälfte, ohne T’Elt.
     }
+
+    public static void quickSort(final char[] a) {
+        int up = a[0];
+        int down = a[a.length - 2];
+        char t = a[a.length - 1];
+        boolean allChecked = false;
+        do {
+            while (a[up] < t) {
+                up++; // suche grösseres (>=) Element von links an
+            }
+            while ((a[down] >= t) && (down > up)) {
+                down--; // suche echt kleineres (<) Element von rechts an
+            }
+            if (down > up) { // solange keine Überschneidung
+                exchange(a, up, down);
+                up++;
+                down--; // linke und rechte Grenze verschieben
+            } else {
+                allChecked = true; // Austauschen beendet
+            }
+        } while (!allChecked);
+        exchange(a, up, a.length - 2); // Trennelement an endgültige Position (a[up])
+        if (a[0] < (up - 1)) quickSort(a, a[0], (up - 1)); // linke Hälfte
+        if ((up + 1) < a.length - 2) quickSort(a, (up + 1), a.length - 2); // rechte Hälfte, ohne T’Elt.
+    }
 }
