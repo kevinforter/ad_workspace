@@ -36,11 +36,11 @@ class SortTest {
         Sort.quickSort(a, 0, 9);
         LOG.info("Array after sort: " + Arrays.toString(a));
 
-        char[] excpectedArr = new char[]{'a', 'b', 'c', 'h', 'i', 'j', 'p', 'r', 't', 'z'};
+        char[] expectedArr = new char[]{'a', 'b', 'c', 'h', 'i', 'j', 'p', 'r', 't', 'z'};
 
         assertAll(
                 () -> assertNotNull(a, "Array shouldn't be empty"),
-                () -> assertArrayEquals(excpectedArr, a, "Array not sorted")
+                () -> assertArrayEquals(expectedArr, a, "Array not sorted")
         );
     }
 
@@ -51,11 +51,11 @@ class SortTest {
         LOG.info("Array before sort: " + Arrays.toString(a));
         Sort.quickSort(a);
         LOG.info("Array after sort: " + Arrays.toString(a));
-        char[] excpectedArr = new char[]{'a', 'b', 'c', 'h', 'i', 'j', 'p', 'r', 't', 'z'};
+        char[] expectedArr = new char[]{'a', 'b', 'c', 'h', 'i', 'j', 'p', 'r', 't', 'z'};
 
         assertAll(
                 () -> assertNotNull(a, "Array shouldn't be empty"),
-                () -> assertArrayEquals(excpectedArr, a, "Array not sorted")
+                () -> assertArrayEquals(expectedArr, a, "Array not sorted")
         );
     }
 
