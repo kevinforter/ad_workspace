@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.exercise.n4.quicksort;
+package ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.quicksort;
 
 import ch.hslu.ad.n41.array.init.RandomInitTask;
 import java.util.Arrays;
@@ -26,7 +26,7 @@ import org.slf4j.Logger;
  */
 public final class DemoQuicksort {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ch.hslu.ad.exercise.n4.quicksort.DemoQuicksort.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DemoQuicksort.class);
 
     /**
      * Privater Konstruktor.
@@ -48,6 +48,7 @@ public final class DemoQuicksort {
             int[] arrayTask = Arrays.copyOf(arrayOriginal, size);
             final QuicksortTask sortTask = new QuicksortTask(arrayTask);
             pool.invoke(sortTask);
+            //TODO Zeitmessung
             LOG.info("QuicksortTask  : {} sec.", '?');
             int[] arrayRec = Arrays.copyOf(arrayOriginal, size);
             QuicksortRecursive.quicksort(arrayRec);

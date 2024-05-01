@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.exercise.n4.findfile;
+package ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.findfile;
 
 import java.io.File;
 import java.util.concurrent.CountedCompleter;

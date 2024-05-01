@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.exercise.n4.fibo;
+package ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.fibo;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -23,7 +23,7 @@ import org.slf4j.Logger;
  */
 public final class DemoFibonacciCalc {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ch.hslu.ad.exercise.n4.fibo.DemoFibonacciCalc.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DemoFibonacciCalc.class);
 
     /**
      * Privater Konstruktor.

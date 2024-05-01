@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.exercise.n4.findfile;
+package ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.findfile;
 
 import java.io.File;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,7 @@ import org.slf4j.Logger;
  */
 public final class FindFile {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ch.hslu.ad.exercise.n4.findfile.FindFile.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FindFile.class);
 
     /**
      * Sucht ein File in einem Verzeichnis.

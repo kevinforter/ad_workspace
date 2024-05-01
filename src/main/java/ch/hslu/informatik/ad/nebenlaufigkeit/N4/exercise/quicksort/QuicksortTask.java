@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.exercise.n4.quicksort;
+package ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.quicksort;
 
 import java.util.concurrent.RecursiveAction;
 

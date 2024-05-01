@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.exercise.n4.mergesort;
+package ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.mergesort;
 
 import ch.hslu.ad.n41.array.init.RandomInitTask;
 import java.util.Arrays;
@@ -26,7 +26,7 @@ import org.slf4j.Logger;
  */
 public final class DemoMergesort {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ch.hslu.ad.exercise.n4.mergesort.DemoMergesort.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DemoMergesort.class);
 
     /**
      * Privater Konstruktor.
@@ -48,6 +48,7 @@ public final class DemoMergesort {
             int[] array = Arrays.copyOf(arrayOriginal, size);
             final MergesortTask sortTask = new MergesortTask(array);
             pool.invoke(sortTask);
+            //TODO Zeitausgabe
             LOG.info("Conc. Mergesort : {} sec.", '?');
             array = Arrays.copyOf(arrayOriginal, size);
             MergesortRecursive.mergeSort(array);
