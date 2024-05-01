@@ -18,6 +18,8 @@ package ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.mergesort;
 import ch.hslu.ad.n41.array.init.RandomInitTask;
 import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.TimeUnit;
+
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
@@ -40,19 +42,31 @@ public final class DemoMergesort {
      * @param args not used.
      */
     public static void main(final String[] args) {
-        final int size = 300_000;
+        final int size = 300_000_000;
         final int[] arrayOriginal = new int[size];
         try (final ForkJoinPool pool = new ForkJoinPool()) {
             RandomInitTask initTask = new RandomInitTask(arrayOriginal, 100);
             pool.invoke(initTask);
             int[] array = Arrays.copyOf(arrayOriginal, size);
             final MergesortTask sortTask = new MergesortTask(array);
+
+            long start = System.nanoTime();
             pool.invoke(sortTask);
-            //TODO Zeitausgabe
-            LOG.info("Conc. Mergesort : {} sec.", '?');
+            long end = System.nanoTime();
+
+            long time = end - start;
+            long sec = TimeUnit.MILLISECONDS.convert(time, TimeUnit.NANOSECONDS);
+            LOG.info("Conc. Mergesort : {} msec.", sec);
+
             array = Arrays.copyOf(arrayOriginal, size);
+
+            start = System.nanoTime();
             MergesortRecursive.mergeSort(array);
-            LOG.info("MergesortRec.   : {} sec.", '?');
+            end = System.nanoTime();
+
+            time = end - start;
+            sec = TimeUnit.MILLISECONDS.convert(time, TimeUnit.NANOSECONDS);
+            LOG.info("MergesortRec.   : {} msec.", sec);
         } finally {
             // Executor shutdown
         }
