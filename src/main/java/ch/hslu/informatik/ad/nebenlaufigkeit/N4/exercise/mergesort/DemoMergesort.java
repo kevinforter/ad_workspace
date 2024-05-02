@@ -65,6 +65,15 @@ public final class DemoMergesort {
 
             time = (end - start) / 1E3;
             LOG.info("MergesortRec.   : {} sec.", time);
+
+            array = Arrays.copyOf(arrayOriginal, size);
+
+            start = System.currentTimeMillis();
+            Arrays.parallelSort(array);
+            end = System.currentTimeMillis();
+
+            time = (end - start) / 1E3;
+            LOG.info("ParallelSort.   : {} sec.", time);
         } finally {
             // Executor shutdown
         }
