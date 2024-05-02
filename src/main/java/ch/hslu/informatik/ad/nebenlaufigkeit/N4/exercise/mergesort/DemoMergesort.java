@@ -50,23 +50,21 @@ public final class DemoMergesort {
             int[] array = Arrays.copyOf(arrayOriginal, size);
             final MergesortTask sortTask = new MergesortTask(array);
 
-            long start = System.nanoTime();
+            long start = System.currentTimeMillis();
             pool.invoke(sortTask);
-            long end = System.nanoTime();
+            long end = System.currentTimeMillis();
 
-            long time = end - start;
-            long sec = TimeUnit.MILLISECONDS.convert(time, TimeUnit.NANOSECONDS);
-            LOG.info("Conc. Mergesort : {} msec.", sec);
+            double time = (end - start) / 1E3;
+            LOG.info("Conc. Mergesort : {} sec.", time);
 
             array = Arrays.copyOf(arrayOriginal, size);
 
-            start = System.nanoTime();
+            start = System.currentTimeMillis();
             MergesortRecursive.mergeSort(array);
-            end = System.nanoTime();
+            end = System.currentTimeMillis();
 
-            time = end - start;
-            sec = TimeUnit.MILLISECONDS.convert(time, TimeUnit.NANOSECONDS);
-            LOG.info("MergesortRec.   : {} msec.", sec);
+            time = (end - start) / 1E3;
+            LOG.info("MergesortRec.   : {} sec.", time);
         } finally {
             // Executor shutdown
         }
