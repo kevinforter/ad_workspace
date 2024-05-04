@@ -2,9 +2,9 @@ package ch.hslu.informatik.ad.sortierungen.A2.E2;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import ch.hslu.informatik.ad.sortierungen.A1.E3.Util;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -57,6 +57,12 @@ class SortTest {
                 () -> assertNotNull(a, "Array shouldn't be empty"),
                 () -> assertArrayEquals(expectedArr, a, "Array not sorted")
         );
+    }
+
+    @Test
+    void testUtil() {
+        char[] a = Util.randomChars(5);
+        LOG.info(Arrays.toString(a));
     }
 
     static Stream<Arguments> provideChars() {
