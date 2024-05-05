@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.n41.array;
+package ch.hslu.informatik.ad.nebenlaufigkeit.N4.n41.array;
 
 import ch.hslu.ad.n41.array.init.RandomInitTask;
-import ch.hslu.ad.n41.array.sort.SortTask;
+import ch.hslu.informatik.ad.nebenlaufigkeit.N4.n41.array.sort.SortTask;
 import ch.hslu.ad.n41.array.sort.check.SortCheckTask;
 import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.n41.array.sort;
+package ch.hslu.informatik.ad.nebenlaufigkeit.N4.n41.array.sort;
 
 public final class InsertionSort {
 
