@@ -50,6 +50,7 @@ public final class DemoMergesort {
             int[] array = Arrays.copyOf(arrayOriginal, size);
             final MergesortTask sortTask = new MergesortTask(array);
 
+            // Mergesort mit Threads
             long start = System.currentTimeMillis();
             pool.invoke(sortTask);
             long end = System.currentTimeMillis();
@@ -59,6 +60,7 @@ public final class DemoMergesort {
 
             array = Arrays.copyOf(arrayOriginal, size);
 
+            // Rekursiver Mergesort
             start = System.currentTimeMillis();
             MergesortRecursive.mergeSort(array);
             end = System.currentTimeMillis();
@@ -68,6 +70,7 @@ public final class DemoMergesort {
 
             array = Arrays.copyOf(arrayOriginal, size);
 
+            // Parallelsort -> basierend auf Mergesort
             start = System.currentTimeMillis();
             Arrays.parallelSort(array);
             end = System.currentTimeMillis();
