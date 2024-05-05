@@ -70,7 +70,7 @@ public final class DemoMergesort {
 
             array = Arrays.copyOf(arrayOriginal, size);
 
-            // Parallelsort -> basierend auf Mergesort
+            // Parallelsort → basierend auf Mergesort
             start = System.currentTimeMillis();
             Arrays.parallelSort(array);
             end = System.currentTimeMillis();
