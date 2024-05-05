@@ -38,7 +38,28 @@ public final class QuicksortRecursive {
      * @param endIdx end index of the array.
      */
     public static void quicksort(int[] array, int startIdx, int endIdx) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int up = startIdx; // linke Grenze
+        int down = endIdx - 1; // rechte Grenze (ohne Trennelement)
+        int t = array[endIdx]; // rechtes Element als Trennelement
+        boolean allChecked = false;
+        do {
+            while (array[up] < t) {
+                up++; // suche grösseres (>=) Element von links an
+            }
+            while ((array[down] > t) && (down > up)) { // geänderte Bedingung
+                down--; // suche echt kleineres (<) Element von rechts an
+            }
+            if (down > up) { // solange keine Überschneidung
+                exchange(array, up, down);
+                up++;
+                down--; // linke und rechte Grenze verschieben
+            } else {
+                allChecked = true; // Austauschen beendet
+            }
+        } while (!allChecked);
+        exchange(array, up, endIdx); // Trennelement an endgültige Position (a[up])
+        if (startIdx < (up - 1)) quicksort(array, startIdx, (up - 1)); // linke Hälfte
+        if ((up + 1) < endIdx) quicksort(array, (up + 1), endIdx); // rechte Hälfte, ohne T’Elt.
     }
 
     /**
