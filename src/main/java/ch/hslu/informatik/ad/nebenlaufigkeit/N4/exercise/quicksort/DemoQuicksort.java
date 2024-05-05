@@ -47,15 +47,31 @@ public final class DemoQuicksort {
             pool.invoke(initTask);
             int[] arrayTask = Arrays.copyOf(arrayOriginal, size);
             final QuicksortTask sortTask = new QuicksortTask(arrayTask);
+
+            long start = System.currentTimeMillis();
             pool.invoke(sortTask);
-            //TODO Zeitmessung
-            LOG.info("QuicksortTask  : {} sec.", '?');
+            long end = System.currentTimeMillis();
+
+            double time = (end - start) / 1E3;
+            LOG.info("QuicksortTask  : {} sec.", time);
+
             int[] arrayRec = Arrays.copyOf(arrayOriginal, size);
+
+            start = System.currentTimeMillis();
             QuicksortRecursive.quicksort(arrayRec);
-            LOG.info("QuicksortRec.  : {} sec.", '?');
+            end = System.currentTimeMillis();
+
+            time = (end - start) / 1E3;
+            LOG.info("QuicksortRec.  : {} sec.", time);
+
             int[] arraySort = Arrays.copyOf(arrayOriginal, size);
+
+            start = System.currentTimeMillis();
             Arrays.sort(arraySort);
-            LOG.info("Arrays.sort    : {} sec.", '?');
+            end = System.currentTimeMillis();
+
+            time = (end - start) / 1E3;
+            LOG.info("Arrays.sort    : {} sec.", time);
         } finally {
             // Executor shutdown
         }
