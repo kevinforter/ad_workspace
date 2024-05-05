@@ -38,29 +38,12 @@ public final class QuicksortRecursive {
      * @param endIdx end index of the array.
      */
     public static void quicksort(int[] array, int startIdx, int endIdx) {
-        int up = startIdx; // linke Grenze
-        int down = endIdx - 1; // rechte Grenze (ohne Trennelement)
-        int t = array[endIdx]; // rechtes Element als Trennelement
-        boolean allChecked = false;
-        do {
-            while (array[up] < t) {
-                up++; // suche grösseres (>=) Element von links an
-            }
-            while ((array[down] > t) && (down > up)) { // geänderte Bedingung
-                down--; // suche echt kleineres (<) Element von rechts an
-            }
-            if (down > up) { // solange keine Überschneidung
-                exchange(array, up, down);
-                up++;
-                down--; // linke und rechte Grenze verschieben
-            } else {
-                allChecked = true; // Austauschen beendet
-            }
-        } while (!allChecked);
-        exchange(array, up, endIdx); // Trennelement an endgültige Position (a[up])
-        if (startIdx < (up - 1)) quicksort(array, startIdx, (up - 1)); // linke Hälfte
-        if ((up + 1) < endIdx) quicksort(array, (up + 1), endIdx); // rechte Hälfte, ohne T’Elt.
+    if (startIdx < endIdx) {
+        int pivotIndex = partition(array, startIdx, endIdx);
+        quicksort(array, startIdx, pivotIndex - 1);
+        quicksort(array, pivotIndex + 1, endIdx);
     }
+}
 
     /**
      * Divides array from pivot, left side contains elements less than Pivot
@@ -72,7 +55,23 @@ public final class QuicksortRecursive {
      * @return the partition index.
      */
     public static int partition(int[] array, int left, int right) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int pivot = array[right];
+        int i = (left - 1); // index of smaller element
+
+        for (int j = left; j < right; j++) {
+            // If current element is smaller than or equal to pivot
+            if (array[j] <= pivot) {
+                i++;
+
+                // swap array[i] and array[j]
+                exchange(array, i, j);
+            }
+        }
+
+        // swap array[i+1] and array[right] (or pivot)
+        exchange(array, i + 1, right);
+
+        return i + 1;
     }
 
     private static void exchange(final int[] array, final int i, final int j) {
