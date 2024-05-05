@@ -15,7 +15,7 @@
  */
 package ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.quicksort;
 
-import ch.hslu.ad.n41.array.init.RandomInitTask;
+import ch.hslu.informatik.ad.nebenlaufigkeit.N4.n41.array.init.RandomInitTask;
 import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
 import org.slf4j.LoggerFactory;

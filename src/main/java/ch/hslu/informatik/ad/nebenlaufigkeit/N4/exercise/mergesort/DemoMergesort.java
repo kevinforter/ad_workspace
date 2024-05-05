@@ -15,7 +15,7 @@
  */
 package ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.mergesort;
 
-import ch.hslu.ad.n41.array.init.RandomInitTask;
+import ch.hslu.informatik.ad.nebenlaufigkeit.N4.n41.array.init.RandomInitTask;
 import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.TimeUnit;
