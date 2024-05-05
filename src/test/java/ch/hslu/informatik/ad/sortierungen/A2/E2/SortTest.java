@@ -60,6 +60,24 @@ class SortTest {
     }
 
     @Test
+    void quickSortWithRandomArray() {
+
+        char[] a = Util.randomChars(5);
+        char[] b = Arrays.copyOf(a, a.length);
+
+        LOG.info("Array before sort: " + Arrays.toString(a));
+        Sort.quickSort(a);
+        LOG.info("Array after sort: " + Arrays.toString(a));
+        Arrays.sort(b);
+
+        assertAll(
+                () -> assertNotNull(a, "Array shouldn't be empty"),
+                () -> assertArrayEquals(b, a, "Array not sorted")
+        );
+
+    }
+
+    @Test
     void testUtil() {
         char[] a = Util.randomChars(5);
         LOG.info(Arrays.toString(a));
