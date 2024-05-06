@@ -21,7 +21,7 @@ import java.util.concurrent.RecursiveTask;
  * Codevorlage für ein klassisches Beispiel zur Berechnung von Fibonacci Zahlen.
  */
 @SuppressWarnings("serial")
-public final class FibonacciTask extends RecursiveTask<Long> {
+public final class FibonacciTask extends RecursiveTask<Integer> {
 
     private final int n;
 
@@ -35,7 +35,14 @@ public final class FibonacciTask extends RecursiveTask<Long> {
     }
 
     @Override
-    protected Long compute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    protected Integer compute() {
+        if (n <= 1) {
+            return n;
+        } else {
+            FibonacciTask f1 = new FibonacciTask(n - 1);
+            f1.fork();
+            FibonacciTask f2 = new FibonacciTask(n - 2);
+            return f2.compute() + f1.join();
+        }
     }
 }

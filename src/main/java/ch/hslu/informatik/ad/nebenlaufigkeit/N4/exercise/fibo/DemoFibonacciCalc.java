@@ -66,14 +66,29 @@ public final class DemoFibonacciCalc {
         final int n = 42;
         final FibonacciTask task = new FibonacciTask(n);
         LOG.info("fibo({}) start...", n);
+
+        long start = System.currentTimeMillis();
         long result = task.invoke();
+        long end = System.currentTimeMillis();
+
+        double time = end - start;
         LOG.info("Conc. recursive = {}", result);
-        LOG.info("Conc. recursive : {} msec.", '?');
+        LOG.info("Conc. recursive : {} msec.", time);
+
+        start = System.currentTimeMillis();
         result = fiboIterative(n);
+        end = System.currentTimeMillis();
+
+        time = end - start;
         LOG.info("Func. iterative = {}", result);
-        LOG.info("Func. iterative : {} msec.", '?');
+        LOG.info("Func. iterative : {} msec.", time);
+
+        start = System.currentTimeMillis();
         result = fiboRecursive(n);
+        end = System.currentTimeMillis();
+
+        time = (end - start) / 1E3;
         LOG.info("Func. recursive = {}", result);
-        LOG.info("Func. recursive : {} sec.", '?');
+        LOG.info("Func. recursive : {} sec.", time);
     }
 }
