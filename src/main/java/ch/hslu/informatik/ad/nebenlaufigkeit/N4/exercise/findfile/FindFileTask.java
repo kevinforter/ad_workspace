@@ -33,20 +33,36 @@ public final class FindFileTask extends CountedCompleter<String> {
      * Erzeugt eine File-Such-Aufgabe.
      *
      * @param regex Ausdruck der den Filenamen enthält.
-     * @param dir Verzeichnis in dem das File gesucht wird.
+     * @param dir   Verzeichnis in dem das File gesucht wird.
      */
     public FindFileTask(String regex, File dir) {
         this(null, regex, dir, new AtomicReference<>(null));
     }
 
     private FindFileTask(final CountedCompleter<?> parent, final String regex, final File dir,
-            final AtomicReference<String> result) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                         final AtomicReference<String> result) {
+        super(parent);
+        this.regex = regex;
+        this.dir = dir;
+        this.result = result;
     }
 
     @Override
     public void compute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        File[] files = dir.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isDirectory()) {
+                    FindFileTask task = new FindFileTask(this, regex, file, result);
+                    task.fork();
+                } else if (file.getName().matches(regex)) {
+                    result.compareAndSet(null, file.getAbsolutePath());
+                    quietlyCompleteRoot();
+                    break;
+                }
+            }
+        }
+        tryComplete();
     }
 
     @Override

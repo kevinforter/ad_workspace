@@ -39,13 +39,24 @@ public final class DemoFindFile {
      */
     public static void main(String[] args) {
         final String search = "find.me";
-        final File rootDir = new File(System.getProperty("user.home"));
+        final File rootDir = new File(System.getProperty("user.home") + "/toDelete");
         LOG.info("Start searching '{}' recurive in '{}'", search, rootDir);
+        long start = System.currentTimeMillis();
         FindFile.findFile(search, rootDir);
-        LOG.info("Found in {} msec.", '?');
+        long end = System.currentTimeMillis();
+
+        long time = end - start;
+        LOG.info("Found in {} msec.", time);
         LOG.info("Find '{}' concurrent in '{}'", search, rootDir);
+
         final FindFileTask root = new FindFileTask(search, rootDir);
+
+        start = System.currentTimeMillis();
         LOG.info(root.invoke());
-        LOG.info("Found in {} msec.", '?');
+        end = System.currentTimeMillis();
+
+        time = end - start;
+        LOG.info("Found in {} msec.", time);
+
     }
 }
