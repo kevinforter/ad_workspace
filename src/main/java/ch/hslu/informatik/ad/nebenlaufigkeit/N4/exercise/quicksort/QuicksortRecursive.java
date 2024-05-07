@@ -21,21 +21,21 @@ package ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.quicksort;
 public final class QuicksortRecursive {
 
     /**
-     * Public method exposed to client, sorts given array using QuickSort
-     * Algorithm in Java.
+     * Öffentliche Methode, die dem Client zur Verfügung gestellt wird,
+     * sortiert das gegebene Array mit dem QuickSort Algorithmus in Java.
      *
-     * @param array input array.
+     * @param array Eingabe-Array.
      */
     public static void quicksort(int[] array) {
         QuicksortRecursive.quicksort(array, 0, array.length - 1);
     }
 
     /**
-     * Recursive quicksort logic.
+     * Rekursive Quicksort-Logik.
      *
-     * @param array input array.
-     * @param startIdx start index of the array.
-     * @param endIdx end index of the array.
+     * @param array Eingabe-Array.
+     * @param startIdx Startindex des Arrays.
+     * @param endIdx Endindex des Arrays.
      */
     public static void quicksort(int[] array, int startIdx, int endIdx) {
     if (startIdx < endIdx) {
@@ -46,34 +46,35 @@ public final class QuicksortRecursive {
 }
 
     /**
-     * Divides array from pivot, left side contains elements less than Pivot
-     * while right side contains elements greater than pivot.
+     * Teilt Array von Pivot, linke Seite enthält Elemente kleiner als Pivot
+     * während die rechte Seite Elemente enthält, die größer als Pivot sind.
      *
-     * @param array array to partitioned.
-     * @param left lower bound of the array.
-     * @param right upper bound of the array.
-     * @return the partition index.
+     * @param array unterteilendes Array Array.
+     * @param left untere Grenze des Arrays.
+     * @param right obere Grenze des Arrays.
+     * @return  des Partitionsindexes.
      */
     public static int partition(int[] array, int left, int right) {
         int pivot = array[right];
-        int i = (left - 1); // index of smaller element
+        int i = (left - 1); // index des kleineren Elementes
 
         for (int j = left; j < right; j++) {
-            // If current element is smaller than or equal to pivot
+            // Wenn aktuelles Element kleiner gleich dem Pivot ist dann wechsle
             if (array[j] <= pivot) {
                 i++;
 
-                // swap array[i] and array[j]
+                // array[i] und array[j] wechseln
                 exchange(array, i, j);
             }
         }
 
-        // swap array[i+1] and array[right] (or pivot)
+        // array[i+1] und array[right] (oder pivot) wechseln
         exchange(array, i + 1, right);
 
         return i + 1;
     }
 
+    // Auslagerung der exchange Funktion
     private static void exchange(final int[] array, final int i, final int j) {
         int temp = array[i];
         array[i] = array[j];
