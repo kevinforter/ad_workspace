@@ -52,10 +52,12 @@ public final class FindFileTask extends CountedCompleter<String> {
         File[] files = dir.listFiles();
         if (files != null) {
             for (File file : files) {
+                // Falls Ordner mache ein neues Unterprogramm
                 if (file.isDirectory()) {
                     FindFileTask task = new FindFileTask(this, regex, file, result);
                     task.fork();
                 } else if (file.getName().matches(regex)) {
+                    // Wenn File gefunden wurde, beenden des Programmes
                     result.compareAndSet(null, file.getAbsolutePath());
                     quietlyCompleteRoot();
                     break;
