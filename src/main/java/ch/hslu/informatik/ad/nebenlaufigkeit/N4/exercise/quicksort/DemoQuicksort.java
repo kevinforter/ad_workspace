@@ -16,8 +16,10 @@
 package ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.quicksort;
 
 import ch.hslu.informatik.ad.nebenlaufigkeit.N4.n41.array.init.RandomInitTask;
+
 import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
+
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
@@ -40,20 +42,29 @@ public final class DemoQuicksort {
      * @param args not used.
      */
     public static void main(final String[] args) {
-        final int size = 300_000;
+
+        StringBuilder table = new StringBuilder();
+        table.append("| Methode | Threshold | Time (sec) |\n");
+        table.append("|---------|-----------|------------|\n");
+
+        final int size = 500_000;
         final int[] arrayOriginal = new int[size];
         try (final ForkJoinPool pool = new ForkJoinPool()) {
             RandomInitTask initTask = new RandomInitTask(arrayOriginal, 100);
             pool.invoke(initTask);
+
+            int threshold = 500;
+
             int[] arrayTask = Arrays.copyOf(arrayOriginal, size);
-            final QuicksortTask sortTask = new QuicksortTask(arrayTask);
+            final QuicksortTask sortTask = new QuicksortTask(arrayTask, threshold);
 
             long start = System.currentTimeMillis();
             pool.invoke(sortTask);
             long end = System.currentTimeMillis();
 
             double time = (end - start) / 1E3;
-            LOG.info("QuicksortTask  : {} sec.", time);
+            table.append("| QuicksortTask ").append(" | ").append(threshold).append(" | ").append(time).append(" |\n");
+            //LOG.info("Threshold: {}, QuicksortTask  : {} sec.", threshold, time);
 
             int[] arrayRec = Arrays.copyOf(arrayOriginal, size);
 
@@ -62,7 +73,8 @@ public final class DemoQuicksort {
             end = System.currentTimeMillis();
 
             time = (end - start) / 1E3;
-            LOG.info("QuicksortRec.  : {} sec.", time);
+            table.append("| QuicksortRec. ").append(" | ").append(threshold).append(" | ").append(time).append(" |\n");
+            //LOG.info("QuicksortRec.  : {} sec.", time);
 
             int[] arraySort = Arrays.copyOf(arrayOriginal, size);
 
@@ -71,7 +83,10 @@ public final class DemoQuicksort {
             end = System.currentTimeMillis();
 
             time = (end - start) / 1E3;
-            LOG.info("Arrays.sort    : {} sec.", time);
+            table.append("| Arrays.sort ").append(" | ").append(threshold).append(" | ").append(time).append(" |\n");
+            //LOG.info("Arrays.sort    : {} sec.", time);
+
+            System.out.println(table.toString());
         } finally {
             // Executor shutdown
         }
