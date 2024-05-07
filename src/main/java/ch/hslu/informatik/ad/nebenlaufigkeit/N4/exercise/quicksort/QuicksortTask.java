@@ -15,9 +15,12 @@
  */
 package ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.quicksort;
 
+import ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.mergesort.InsertionSort;
+
 import java.util.Arrays;
 import java.util.concurrent.RecursiveAction;
 
+import static ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.quicksort.QuicksortRecursive.partition;
 import static ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.quicksort.QuicksortRecursive.quicksort;
 
 /**
@@ -26,7 +29,7 @@ import static ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.quicksort.Quicks
 @SuppressWarnings("serial")
 public final class QuicksortTask extends RecursiveAction {
 
-    private static final int THRESHOLD = 5;
+    private static final int THRESHOLD = 500;
     private final int[] array;
     private final int min;
     private final int max;
@@ -48,38 +51,16 @@ public final class QuicksortTask extends RecursiveAction {
 
     @Override
     protected void compute() {
-        // Überprüfung Schwellenwert
-        if (max - min < THRESHOLD) {
-            // sequenzielle Sortierung
-            quicksort(array, min, max);
-        } else {
-            // Sortierende Folge von Elementen in zwei Hälften teilen
-            final int mid = min + (max - min) / 2;
-            invokeAll(
-                    // linke Seite sortieren
-                    new QuicksortTask(array, min, mid),
-                    new QuicksortTask(array, mid, max));
-            merge(min, mid, max);
-        }
-    }
-
-    private void merge(final int min, int mid, int max) {
-        // vordere Hälfte von array in Hilfsarray buf kopieren
-        int[] buf = Arrays.copyOfRange(array, min, mid);
-        int i = 0;
-        int j = min;
-        int k = mid;
-        while (i < buf.length) {
-            // jeweils das nächstgrösste Element zurückkopieren
-            // bei k == max, Rest von buf zurückkopieren, falls vorhanden
-            if (k == max || buf[i] < array[k]) {
-                array[j] = buf[i];
-                i++;
+        if (min < max) {
+            if (max - min < THRESHOLD) {
+                // Führe Quicksort sequenziell aus, wenn die Größe des Teilarrays unter dem Threshold liegt
+                quicksort(array, min, max);
             } else {
-                array[j] = array[k];
-                k++;
+                int pivotIndex = partition(array, min, max);
+                QuicksortTask leftTask = new QuicksortTask(array, min, pivotIndex - 1);
+                QuicksortTask rightTask = new QuicksortTask(array, pivotIndex + 1, max);
+                invokeAll(leftTask, rightTask);
             }
-            j++;
         }
     }
 }
