@@ -24,7 +24,7 @@ import java.util.concurrent.RecursiveAction;
 @SuppressWarnings("serial")
 public final class MergesortTask extends RecursiveAction {
 
-    private static final int THRESHOLD = 400;
+    private int THRESHOLD = 400;
     private final int[] array;
     private final int min;
     private final int max;
@@ -36,6 +36,11 @@ public final class MergesortTask extends RecursiveAction {
      */
     public MergesortTask(final int[] array) {
         this(array, 0, array.length);
+    }
+
+    public MergesortTask(final int[] array, int threshold) {
+        this(array, 0, array.length);
+        THRESHOLD = threshold;
     }
 
     private MergesortTask(final int[] array, final int min, final int max) {
