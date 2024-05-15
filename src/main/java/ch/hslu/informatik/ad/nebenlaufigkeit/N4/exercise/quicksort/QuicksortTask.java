@@ -56,19 +56,15 @@ public final class QuicksortTask extends RecursiveAction {
 
     @Override
     protected void compute() {
-
-        int pivotIndex = 0;
-        if (min < max) {
+        if (max - min < THRESHOLD) {
             // If the sub-array is small enough, sort it directly
-            //Arrays.sort(array, min, max + 1); // Using min to max+1 to sort the correct segment
-            pivotIndex = partition(array, min, max);
+            Arrays.sort(array, min, max + 1); // Using min to max+1 to sort the correct segment
         } else {
             // Ensure that min < max to avoid incorrect partition and infinite recursion
-            if (max - min < THRESHOLD) {
+            if (min < max) {
                 // Partition the array and get the pivot index
-                //int pivotIndex = partition(array, min, max);
-                Arrays.sort(array, min, max + 1);
-            } else {
+                int pivotIndex = partition(array, min, max);
+
                 // Create subtasks for parallel sorting
                 QuicksortTask leftTask = new QuicksortTask(array, min, pivotIndex - 1);
                 QuicksortTask rightTask = new QuicksortTask(array, pivotIndex + 1, max); // pivotIndex + 1 to exclude pivot
@@ -78,7 +74,6 @@ public final class QuicksortTask extends RecursiveAction {
             }
         }
     }
-
 
     // Partition method implementation should be included here, for completeness.
     private int partition(int[] array, int low, int high) {
@@ -100,87 +95,3 @@ public final class QuicksortTask extends RecursiveAction {
         return i + 1;
     }
 }
-
-    /*
-    @Override
-    protected void compute() {
-
-        int pivotIndex = 0;
-        if (min < max) {
-            pivotIndex = partition(array, min, max);
-        }
-
-        if (max - min < THRESHOLD) {
-            Arrays.sort(array);
-        } else {
-
-            QuicksortTask leftTask = new QuicksortTask(array, min, pivotIndex - 1);
-            QuicksortTask rightTask = new QuicksortTask(array, pivotIndex, max);
-
-            invokeAll(leftTask, rightTask);
-
-        }
-
-     */
-
-
-
-        /*
-        if (array.length == 0) {
-            return;
-        }
-
-        if (max - min < THRESHOLD) {
-            // sequenzielle Sortierung
-            InsertionSort.exec(array, min, max);
-            // Arrays.sort(array, min, max);
-        } else {
-
-            if (min < max) {
-                // Sortierende Folge von Elementen in zwei Hälften teilen
-                int pivotIndex = partition(array, min, max);
-
-                QuicksortTask leftTask = new QuicksortTask(array, min, pivotIndex - 1);
-                leftTask.fork();
-                QuicksortTask rightTask = new QuicksortTask(array, pivotIndex + 1, max);
-                rightTask.compute();
-                //rightTask.fork();
-
-                //leftTask.join();
-
-         */
-
-
-
-                /*
-
-                if (pivotIndex > min) {
-                    QuicksortTask leftTask = new QuicksortTask(array, min, pivotIndex - 1);
-                    leftTask.fork();
-                }
-
-                if (pivotIndex < max) {
-                    QuicksortTask rightTask = new QuicksortTask(array, pivotIndex + 1, max);
-                    rightTask.compute();
-                }
-
-                 */
-
-
-//    @Override
-//    protected void compute() {
-//        if (max - min < THRESHOLD) {
-//            // sequenzielle Sortierung
-//            InsertionSort.exec(array, min, max);
-//            //Arrays.sort(array, min, max);
-//        } else {
-//
-//                // Sortierende Folge von Elementen in zwei Hälften teilen
-//                int pivotIndex = partition(array, min, max);
-//
-//                QuicksortTask leftTask = new QuicksortTask(array, min, pivotIndex - 1);
-//                QuicksortTask rightTask = new QuicksortTask(array, pivotIndex, max); // Start bei mid + 1
-//
-//                invokeAll(leftTask, rightTask);
-//            }
-//    }

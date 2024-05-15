@@ -68,8 +68,6 @@ public final class DemoQuicksort {
             double time = (end - start) / 1E3;
             table.append("| QuicksortTask ").append(" | ").append(threshold).append(" | ").append(time).append(" |\n");
             LOG.info("QuicksortTask  : {} sec.", time);
-            //LOG.info(Arrays.toString(arrayTask));
-
 
             int[] arrayRec = Arrays.copyOf(arrayOriginal, size);
 
