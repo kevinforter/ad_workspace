@@ -50,14 +50,14 @@ public final class DemoMergesort {
 
         for (int i = 0; i < 1; i++) {
 
-            final int size = 30_000_000;
+            final int size = 300_000_000;
             final int[] arrayOriginal = new int[size];
             try (final ForkJoinPool pool = new ForkJoinPool()) {
                 RandomInitTask initTask = new RandomInitTask(arrayOriginal, 100);
                 pool.invoke(initTask);
 
-                int minThreshold = 3_000_000;
-                int maxThreshold = 3_000_000;
+                int minThreshold = 30_000_000;
+                int maxThreshold = 30_000_000;
                 int step = 20;
 
                 for (int threshold = minThreshold; threshold <= maxThreshold; threshold += step) {
@@ -69,6 +69,9 @@ public final class DemoMergesort {
                     long start = System.currentTimeMillis();
                     pool.invoke(sortTask);
                     long end = System.currentTimeMillis();
+                    final ch.hslu.ad.n41.array.sort.check.SortCheckTask check = new ch.hslu.ad.n41.array.sort.check.SortCheckTask(array);
+                    boolean ok = pool.invoke(check);
+                    LOG.info("Sort Check OK? : {}", ok);
 
                     double time = (end - start) / 1E3;
                     LOG.info("Conc. Mergesort : {} sec.", time);
