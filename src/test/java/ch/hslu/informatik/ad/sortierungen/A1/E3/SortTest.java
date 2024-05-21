@@ -1,6 +1,5 @@
 package ch.hslu.informatik.ad.sortierungen.A1.E3;
 
-import org.junit.Ignore;
 import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +35,6 @@ class SortTest {
         reversedArray40K = Util.genArraySortedReverse(40000);
     }
 
-    @Ignore
     void selectSort() {
         int[] unsortArr = new int[]{19, 71, 67, 21, 9, 21};
 
@@ -53,7 +51,6 @@ class SortTest {
         assertEquals(71, sortedArr[sortedArr.length - 1]);
     }
 
-    @Ignore
     void test_return() {
 
         int[] unsortArr = new int[]{19, 75, 67, 21, 9};
@@ -64,7 +61,6 @@ class SortTest {
         LOG.info(Arrays.toString(sortedArr));
     }
 
-    @Ignore
     void test_firstElement() {
 
         int[] unsortArr = new int[]{19, 75, 67, 21, 9};
@@ -75,7 +71,6 @@ class SortTest {
         LOG.info(Arrays.toString(sortedArr));
     }
 
-    @Ignore
     void test_lastElement() {
 
         int[] unsortArr = new int[]{19, 75, 67, 21, 9};
