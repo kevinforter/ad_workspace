@@ -16,36 +16,42 @@ public class OptimizedSearch {
      */
     public static int stateSearch(final String a) {
         int i = 0; // index to string a
-        String state = "NAN"; // means "nothing found"
+        String state = "-1"; // means "nothing found"
         final int notFound = -1;
         do {
             switch (state) {
-                case "NAN":
+                case "-1": // Z0
                     if (a.charAt(i) == 'A') {
                         state = "A";
                     }
                     break;
-                case "A":
+                case "A": // Z1
                     if (a.charAt(i) == 'N') {
                         state = "AN";
                     }
                     break;
-                case "AN":
+                case "AN": // Z2
                     if (a.charAt(i) == 'A') {
                         state = "ANA";
+                    } else {
+                        state = "-1";
                     }
                     break;
-                case "ANA":
+                case "ANA": // Z3
                     if (a.charAt(i) == 'N') {
                         state = "ANAN";
+                    } else {
+                        state = "A";
                     }
                     break;
-                case "ANAN":
+                case "ANAN": // Z4
                     if (a.charAt(i) == 'A') {
                         state = "ANANA";
+                    } else {
+                        state = "AN";
                     }
                     break;
-                case "ANANA":
+                case "ANANA": // Z5
                     if (a.charAt(i) == 'S') {
                         state = "ANANAS";
                     } else {
@@ -54,7 +60,7 @@ public class OptimizedSearch {
                     break;
             }
             i++;
-        } while ((!state.equals("ANANAS") && (i < a.length())));
+        } while ((!state.equals("ANANAS") && (i < a.length()))); // Z6
         if (state.equals("ANANAS")) {
             return (i - "ANANAS".length());
         }
