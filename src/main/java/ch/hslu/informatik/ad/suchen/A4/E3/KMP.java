@@ -4,13 +4,6 @@ import java.util.Arrays;
 
 public class KMP {
 
-    public static void main(String[] args) {
-
-        int index = kmpSearch("abcaaabcacaabcaabaababacabcacaaa", "abcaab");
-        System.out.println("\nANANAS GEFUNDEN BEI INDEX: " + index);
-
-    }
-
     /**
      * Erzeugt für das Pattern einen Musterautomaten.
      *
