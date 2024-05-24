@@ -6,8 +6,8 @@ public class KMP {
 
     public static void main(String[] args) {
 
-        int index = kmpSearch("HJUENSEISBEINSDGIOE", "EISBEIN");
-        System.out.println("ANANAS GEFUNDEN BEI INDEX: " + index);
+        int index = kmpSearch("abcaaabcacaabcaabaababacabcacaaa", "abcaab");
+        System.out.println("\nANANAS GEFUNDEN BEI INDEX: " + index);
 
     }
 
@@ -54,6 +54,7 @@ public class KMP {
             } else {
                 j = next[j]; // go to next state
             }
+            System.out.print("State: " + j + " -> "); // print the current state
         } while ((j < m) && (i < n));
         if (j == m) {
             return (i - m); // pattern found: index to position in a
