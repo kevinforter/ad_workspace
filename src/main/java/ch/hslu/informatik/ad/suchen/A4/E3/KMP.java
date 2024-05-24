@@ -1,8 +1,13 @@
 package ch.hslu.informatik.ad.suchen.A4.E3;
 
+import java.util.Arrays;
+
 public class KMP {
 
     public static void main(String[] args) {
+
+        int index = kmpSearch("HJUENSEISBEINSDGIOE", "EISBEIN");
+        System.out.println("ANANAS GEFUNDEN BEI INDEX: " + index);
 
     }
 
@@ -29,6 +34,7 @@ public class KMP {
                 j = next[j];
             }
         } while (i < (m - 1));
+        System.out.println(Arrays.toString(next));
         return next;
     }
 
