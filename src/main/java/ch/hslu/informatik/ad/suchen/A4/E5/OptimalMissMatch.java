@@ -1,6 +1,6 @@
 package ch.hslu.informatik.ad.suchen.A4.E5;
 
-public class OptimalMissmatch {
+public class OptimalMissMatch {
 
     /**
      * Durchsucht eine Zeichenkette mittels optimalMissMatchSearch.

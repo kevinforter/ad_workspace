@@ -2,12 +2,6 @@ package ch.hslu.informatik.ad.suchen.A4.E2;
 
 public class OptimizedSearch {
 
-    public static void main(String[] args) {
-
-        int index = stateSearch("BNMANANASZUW");
-        System.out.println("ANANAS wurde beim Index gefunden: " + index);
-    }
-
     /**
      * Durchsucht eine Zeichenkette mittels optimiertem Suchautomaten.
      *
