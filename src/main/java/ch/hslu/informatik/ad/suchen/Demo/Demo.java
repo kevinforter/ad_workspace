@@ -8,6 +8,8 @@ public class Demo {
 
     public static void main(String[] args) {
 
+
+
         // You need to provide the string and pattern to the kmpSearch method
         int indexKMP = KMP.kmpSearch("BNMANANASZUW", "ANANAS");
         System.out.println("\nKMP index: " + indexKMP);
