@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -21,7 +20,9 @@ public class Demo {
         String content = null;
 
         try {
-            content = Files.readString(Path.of("/Users/kevinforter/Library/CloudStorage/OneDrive-HochschuleLuzern/HSLU/2024/FS24/AD/ad_workspace/src/main/java/ch/hslu/informatik/ad/suchen/Demo/random-100M"), StandardCharsets.ISO_8859_1);
+            content = Files.readString(Path.of("/Users/kevinforter/Library/CloudStorage/OneDrive-HochschuleLuzern/HSLU/2024/FS24/AD/ad_workspace/src/main/java/ch/hslu/informatik/ad/suchen/Demo/random-1G"), StandardCharsets.ISO_8859_1);
+            LOG.info("TIME FOR FILE: random-1G");
+            LOG.info("----------------------------------------------------");
         } catch (IOException e) {
             LOG.error("ERROR accused while reading file in: " + e);
         }
@@ -33,7 +34,8 @@ public class Demo {
         long end = System.nanoTime();
 
         double time = (end - start) / 1E9;
-        LOG.info(String.format("%-20s %20s sec", "Time for KMP:", time));
+        time = Double.parseDouble(String.format("%.4f", time));
+        LOG.info(String.format("%-20s %20s %10s", "Time for KMP Search:", time, "sec"));
 
         // You need to provide the string and pattern to the kmpSearch method
         start = System.nanoTime();
@@ -41,6 +43,7 @@ public class Demo {
         end = System.nanoTime();
 
         time = (end - start) / 1E9;
-        LOG.info(String.format("%-20s %19s sec", "Time for QuickSearch:", time));
+        time = Double.parseDouble(String.format("%.4f", time));
+        LOG.info(String.format("%-20s %19s %10s", "Time for QuickSearch:", time, "sec"));
     }
 }

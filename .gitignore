@@ -251,3 +251,5 @@ buildNumber.properties
 .classpath
 
 # End of https://www.toptal.com/developers/gitignore/api/java,maven,intellij+all,intellij,macos
+/src/main/java/ch/hslu/informatik/ad/suchen/Demo/random-1G
+/src/main/java/ch/hslu/informatik/ad/suchen/Demo/random-100M
