@@ -27,7 +27,7 @@ public class KMP {
                 j = next[j];
             }
         } while (i < (m - 1));
-        System.out.println(Arrays.toString(next));
+        //System.out.println(Arrays.toString(next)); // prints out the next array
         return next;
     }
 
@@ -47,7 +47,7 @@ public class KMP {
             } else {
                 j = next[j]; // go to next state
             }
-            System.out.print("State: " + j + " -> "); // print the current state
+            //System.out.print("State: " + j + " -> "); // print the current state
         } while ((j < m) && (i < n));
         if (j == m) {
             return (i - m); // pattern found: index to position in a
