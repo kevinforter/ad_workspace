@@ -44,4 +44,35 @@ class QuickSearchTest {
         assertEquals(5, indexQS);
     }
 
+    @Test
+    public void quickSearchReturnsCorrectIndexWhenPatternFound() {
+        String text = "HelloWorld";
+        String pattern = "World";
+        int index = QuickSearch.quickSearch(text, pattern);
+        assertEquals(5, index);
+    }
+
+    @Test
+    public void quickSearchReturnsMinusOneWhenPatternNotFound() {
+        String text = "HelloWorld";
+        String pattern = "Java";
+        int index = QuickSearch.quickSearch(text, pattern);
+        assertEquals(-1, index);
+    }
+
+    @Test
+    public void quickSearchReturnsZeroWhenPatternIsAtStart() {
+        String text = "HelloWorld";
+        String pattern = "Hello";
+        int index = QuickSearch.quickSearch(text, pattern);
+        assertEquals(0, index);
+    }
+
+    @Test
+    public void quickSearchReturnsCorrectIndexWhenPatternIsAtEnd() {
+        String text = "HelloWorld";
+        String pattern = "World";
+        int index = QuickSearch.quickSearch(text, pattern);
+        assertEquals(5, index);
+    }
 }
