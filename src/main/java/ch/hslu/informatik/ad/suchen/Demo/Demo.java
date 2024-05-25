@@ -14,6 +14,6 @@ public class Demo {
 
         // You need to provide the string and pattern to the kmpSearch method
         int indexQS = QuickSearch.quickSearch("BNMANANASZUW", "ANANAS");
-        System.out.println("\nQuickSearch index: " + indexKMP);
+        System.out.println("\nQuickSearch index: " + indexQS);
     }
 }
