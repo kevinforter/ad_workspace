@@ -47,13 +47,13 @@ public final class DemoQuicksort {
         table.append("| Methode | Threshold | Time (sec) |\n");
         table.append("|---------|-----------|------------|\n");
 
-        final int size = 1_000_000;
+        final int size = 300_000_000;
         final int[] arrayOriginal = new int[size];
         try (final ForkJoinPool pool = new ForkJoinPool()) {
             RandomInitTask initTask = new RandomInitTask(arrayOriginal, 100);
             pool.invoke(initTask);
 
-            int threshold = 100_000;
+            int threshold = 30_000_000;
 
             int[] arrayTask = Arrays.copyOf(arrayOriginal, size);
             final QuicksortTask sortTask = new QuicksortTask(arrayTask);

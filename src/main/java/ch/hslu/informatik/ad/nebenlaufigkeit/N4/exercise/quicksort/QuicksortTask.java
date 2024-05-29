@@ -29,7 +29,7 @@ import static ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.quicksort.Quicks
 @SuppressWarnings("serial")
 public final class QuicksortTask extends RecursiveAction {
 
-    private int THRESHOLD = 100_000;
+    private int THRESHOLD = 30_000_000;
     private final int[] array;
     private final int min;
     private final int max;
