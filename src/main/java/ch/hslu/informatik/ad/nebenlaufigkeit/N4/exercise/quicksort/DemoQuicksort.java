@@ -53,7 +53,7 @@ public final class DemoQuicksort {
             RandomInitTask initTask = new RandomInitTask(arrayOriginal, 100);
             pool.invoke(initTask);
 
-            int threshold = 10_000_000;
+            int threshold = 100_000;
 
             int[] arrayTask = Arrays.copyOf(arrayOriginal, size);
             final QuicksortTask sortTask = new QuicksortTask(arrayTask);

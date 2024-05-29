@@ -29,7 +29,7 @@ import static ch.hslu.informatik.ad.nebenlaufigkeit.N4.exercise.quicksort.Quicks
 @SuppressWarnings("serial")
 public final class QuicksortTask extends RecursiveAction {
 
-    private int THRESHOLD;
+    private int THRESHOLD = 100_000;
     private final int[] array;
     private final int min;
     private final int max;
@@ -41,11 +41,6 @@ public final class QuicksortTask extends RecursiveAction {
      */
     public QuicksortTask(int[] array) {
         this(array, 0, array.length - 1);
-    }
-
-    public QuicksortTask(int[] array, int threshold) {
-        this(array, 0, array.length - 1);
-        THRESHOLD = threshold;
     }
 
     private QuicksortTask(final int[] array, final int min, final int max) {
