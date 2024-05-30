@@ -8,7 +8,7 @@ public class MemorySimple implements Memory{
     private int memorySize;
     private int allocated;
 
-    private List<Integer> allocations = new ArrayList<>();
+    private final List<Integer> allocations = new ArrayList<>();
 
     public MemorySimple(int memorySize) {
         this.memorySize = memorySize;
@@ -33,8 +33,18 @@ public class MemorySimple implements Memory{
 
     @Override
     public void free(Allocation block) {
+
+        if (memorySize - block.getSize() < 0) {
+            throw new IllegalArgumentException("Speicherplatz kann nicht kleiner als 0 sein");
+        }
         memorySize += block.getSize();
         allocated -= block.getSize();
+
+        for (int i = allocations.size() - 1; i >= allocated; i--) {
+            allocations.remove(i);
+        }
+
+        block = null;
     }
 
     @Override
