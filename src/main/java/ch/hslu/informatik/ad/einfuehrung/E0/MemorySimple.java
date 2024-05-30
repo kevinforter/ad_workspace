@@ -1,4 +1,4 @@
-package ch.hslu.informatik.ad.einfuehrung.E2;
+package ch.hslu.informatik.ad.einfuehrung.E0;
 
 import java.util.ArrayList;
 import java.util.List;
