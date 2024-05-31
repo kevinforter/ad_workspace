@@ -9,29 +9,50 @@ class FibonacciTest {
     @Test
     void test_giveFibonacciNumber9_shouldReturn34() {
 
-        int f = FibonacciDemo.fiboRec1(9);
-        assertEquals(34, f);
+        int fib1 = FibonacciDemo.fiboRec1(9);
+        int fib2 = FibonacciDemo.fiboRec2(9);
+
+        assertAll(
+                () -> assertEquals(34, fib1),
+                () -> assertEquals(34, fib2)
+        );
     }
 
     @Test
     void test_giveFibonacciNumber0_shouldReturn0() {
 
-        int f = FibonacciDemo.fiboRec1(0);
-        assertEquals(0, f);
+        int fib1 = FibonacciDemo.fiboRec1(0);
+        int fib2 = FibonacciDemo.fiboRec2(0);
+
+        assertAll(
+                () -> assertEquals(0, fib1),
+                () -> assertEquals(0, fib2)
+        );
     }
 
     @Test
     void test_giveFibonacciNumber2_shouldReturn1() {
 
-        int f = FibonacciDemo.fiboRec1(2);
-        assertEquals(1, f);
+        int fib1 = FibonacciDemo.fiboRec1(2);
+        int fib2 = FibonacciDemo.fiboRec2(2);
+
+        assertAll(
+                () -> assertEquals(1, fib1),
+                () -> assertEquals(1, fib2)
+
+        );
     }
 
     @Test
     void test_giveFibonacciNumberLowerThan0_shouldThrowException() {
 
-        assertThrows(StackOverflowError.class, () -> {
-            int i = FibonacciDemo.fiboRec1(-1);
-        });
+        assertAll(
+                () -> assertThrows(StackOverflowError.class, () -> {
+                    FibonacciDemo.fiboRec1(-1);
+                }),
+                () -> assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+                    FibonacciDemo.fiboRec2(-1);
+                })
+        );
     }
 }

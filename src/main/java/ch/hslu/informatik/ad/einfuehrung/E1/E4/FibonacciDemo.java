@@ -2,7 +2,7 @@ package ch.hslu.informatik.ad.einfuehrung.E1.E4;
 
 public class FibonacciDemo {
 
-    static int[] f = new int[Integer.MAX_VALUE];
+    static int[] f = new int[2048];
 
     public static void main(String[] args) {
         int fib1 = fiboRec1(9);
