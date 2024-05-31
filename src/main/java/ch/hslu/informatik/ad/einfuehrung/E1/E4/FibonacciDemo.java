@@ -2,7 +2,7 @@ package ch.hslu.informatik.ad.einfuehrung.E1.E4;
 
 public class FibonacciDemo {
 
-    static int[] f = new int[1024];
+    static int[] f = new int[Integer.MAX_VALUE];
 
     public static void main(String[] args) {
         int fib1 = fiboRec1(9);
@@ -34,6 +34,10 @@ public class FibonacciDemo {
 
         if(n == 0 || n == 1) {
             return n;
+        }
+
+        if(f[n] != 0) {
+            return f[n];
         }
 
         f[n] = fiboRec1(n - 2) + fiboRec1(n - 1);
