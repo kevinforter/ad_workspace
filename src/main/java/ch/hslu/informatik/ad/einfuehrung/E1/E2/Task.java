@@ -30,9 +30,10 @@ public class Task {
         long end = System.currentTimeMillis();
         long duration = end - start;
 
-        LOG.info("Counters:\t\t {}, {}, {}", counter1, counter2, counter3);
-        LOG.info("Total counter:\t {}", totalCounter);
-        LOG.info("Duration:\t\t {} ms", duration);
+        LOG.info(String.format("N: %27s %d","", n));
+        LOG.info(String.format("Counters: %20s %d T1, %d T2, %d T3", "", counter1, counter2, counter3));
+        LOG.info(String.format("Total counter: %15s %d", "", totalCounter));
+        LOG.info(String.format("Duration: %20s %d ms", "", duration));
         LOG.info("");
     }
 
