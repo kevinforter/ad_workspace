@@ -12,14 +12,18 @@ public class CheckSymmetricNumbers {
 
     public static void main(String[] args) {
 
-        int input = 1001;
+        int input = 198;
         boolean output = check(input);
 
-        LOG.info("Zahl " + input + " ist Symmetrisch: " + output);
-
+        if (output) {
+            LOG.info("Zahl " + input + " ist Symmetrisch: " + true);
+        } else {
+            int nextSym = nextInt(input);
+            LOG.info("Zahl " + input + " ist Symmetrisch: " + false + " [nächste Nummer: " + nextSym + "]");
+        }
     }
 
-    public static boolean check(int input) {
+    private static boolean check(int input) {
 
         List<Character> arrayList = new ArrayList<>();
         String inputAsString = String.valueOf(input);
@@ -31,5 +35,13 @@ public class CheckSymmetricNumbers {
         List<Character> reversedList = arrayList.reversed();
 
         return reversedList.equals(arrayList);
+    }
+
+    private static int nextInt(int input) {
+
+        while (!check(input)) {
+            input += 1;
+        }
+        return input;
     }
 }
