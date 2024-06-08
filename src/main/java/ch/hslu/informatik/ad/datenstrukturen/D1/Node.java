@@ -1,24 +1,29 @@
 package ch.hslu.informatik.ad.datenstrukturen.D1;
 
-public class Node<Allocation> {
+public class Node {
 
-    Allocation value;
+    private Allocation value;
 
-    Node<Allocation> next;
+    private Node next;
 
     public Node(Allocation value) {
         this.value = value;
-    }
-
-    public Node<Allocation> getNext() {
-        return this.next;
+        this.next = null;
     }
 
     public Allocation getValue() {
-        return this.value;
+        return value;
     }
 
-    public void setNext(Node<Allocation> next) {
+    public void setValue(Allocation value) {
+        this.value = value;
+    }
+
+    public Node getNext() {
+        return next;
+    }
+
+    public void setNext(Node next) {
         this.next = next;
     }
 }
