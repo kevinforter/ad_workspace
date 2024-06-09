@@ -6,6 +6,9 @@ public class Node {
 
     private Node next;
 
+    public Node() {
+    }
+
     public Node(Allocation value) {
         this.value = value;
         this.next = null;
