@@ -28,8 +28,10 @@ public class ListDemo {
         System.out.println("\n");
         list.show();
 
-        list.removeAtIndex(1, block1);
+        list.removeAtIndex(1);
         System.out.println("\n");
         list.show();
+
+        System.out.println("\nFound " + block4 + ": " + list.contains(block4));
     }
 }

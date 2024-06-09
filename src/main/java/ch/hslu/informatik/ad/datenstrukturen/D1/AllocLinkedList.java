@@ -1,5 +1,7 @@
 package ch.hslu.informatik.ad.datenstrukturen.D1;
 
+import java.util.List;
+
 public class AllocLinkedList {
 
     private Node head = null;
@@ -26,6 +28,12 @@ public class AllocLinkedList {
         }
     }
 
+    public void insertAtHead(Allocation... valueList) {
+        for (Allocation value: valueList) {
+            insertAtHead(value);
+        }
+    }
+
     public void insertAtHead(Allocation value) {
         Node node = new Node(value);
 
@@ -48,24 +56,58 @@ public class AllocLinkedList {
                 // Nodes nach vorne gehen bis Index matcht
                 n = n.getNext();
             }
+            // Zuweisung des neuen Nodes
             node.setNext(n.getNext());
+            // Next des vorherigen Nodes auf den neuen Node
             n.setNext(node);
         }
     }
 
+    public void remove(Allocation value) {
+        if (head.getValue().equals(value)) {
+            removeHead();
+        } else {
+            Node node = head;
+            Node nToDelete;
 
-    public void removeHead(Allocation value) {
+            // Iteration durch Liste
+            while (node.getNext() != null) {
+                if (node.getNext().getValue().equals(value)) {
+                    // Wenn der nächste Node der zu Löschende ist
+                    nToDelete = node.getNext();
+                    // Node aus der liste entfernen
+                    node.setNext(nToDelete.getNext());
+                    // Java Garbage Collector übergeben
+                    nToDelete = null;
+                    size--;
+                } else {
+                    node = node.getNext();
+                }
+            }
+        }
+    }
+
+
+    public void removeHead() {
         if (isEmpty()) {
             throw new IllegalStateException("List ist empty");
         } else {
             head = head.getNext();
+            size--;
         }
     }
 
-    public void removeAtIndex(int index, Allocation value) {
+    public Allocation popHead() {
+        Node oldHead = head;
+        removeHead();
+        return oldHead.getValue();
+    }
+
+    public void removeAtIndex(int index) {
 
         if (index == 0) {
-            removeHead(value);
+            head = head.getNext();
+            size--;
         } else {
             Node n = head;
             Node nToDelete;
@@ -73,11 +115,14 @@ public class AllocLinkedList {
                 // Nodes nach vorne gehen bis Index matcht
                 n = n.getNext();
             }
+            // Falls nächster Node der zu Löschende ist
             nToDelete = n.getNext();
+            // Node aus Liste löschen
             n.setNext(nToDelete.getNext());
+            // Node an Java Garbage Collector übergeben
             nToDelete = null;
+            size--;
         }
-
     }
 
     public Node getHead() {
@@ -86,6 +131,21 @@ public class AllocLinkedList {
 
     public int getSize() {
         return size;
+    }
+
+    public boolean contains(Allocation value) {
+        Node node = head;
+
+        boolean found = false;
+        while (node != null) {
+
+            if (node.getValue().equals(value)) {
+                found = true;
+                break;
+            }
+            node = node.getNext();
+        }
+        return found;
     }
 
     public void show() {
