@@ -1,22 +1,22 @@
 package ch.hslu.informatik.ad.datenstrukturen.D1.E2;
 
-public class AllocLinkedList {
+public class LinkedList<T> {
 
-    private Node head = null;
+    private Node<T> head = null;
     private int size = 0;
 
     public boolean isEmpty() {
         return head == null;
     }
 
-    public void insert(Allocation value) {
+    public void insert(T value) {
 
-        Node node = new Node(value);
+        Node<T> node = new Node<>(value);
         if (head == null) {
             head = node;
             size++;
         } else {
-            Node n = head;
+            Node<T> n = head;
             while (n.getNext() != null) {
                 // Solange next Node nicht null gehe eines nach vorne
                 n = n.getNext();
@@ -26,14 +26,14 @@ public class AllocLinkedList {
         }
     }
 
-    public void insertAtHead(Allocation... valueList) {
-        for (Allocation value: valueList) {
+    public void insertAtHead(T... valueList) {
+        for (T value: valueList) {
             insertAtHead(value);
         }
     }
 
-    public void insertAtHead(Allocation value) {
-        Node node = new Node(value);
+    public void insertAtHead(T value) {
+        Node<T> node = new Node<>(value);
 
         // Next Node des neuen Nodes ist der Head
         node.setNext(head);
@@ -42,14 +42,14 @@ public class AllocLinkedList {
         size++;
     }
 
-    public void insertAtIndex(int index, Allocation value) {
+    public void insertAtIndex(int index, T value) {
 
         if (index == 0) {
             insertAtHead(value);
         } else {
-            Node node = new Node(value);
+            Node<T> node = new Node<>(value);
 
-            Node n = head;
+            Node<T> n = head;
             for (int i = 0; i < index - 1; i++) {
                 // Nodes nach vorne gehen bis Index matcht
                 n = n.getNext();
@@ -61,12 +61,12 @@ public class AllocLinkedList {
         }
     }
 
-    public void remove(Allocation value) {
+    public void remove(T value) {
         if (head.getValue().equals(value)) {
             removeHead();
         } else {
-            Node node = head;
-            Node nToDelete;
+            Node<T> node = head;
+            Node<T> nToDelete;
 
             // Iteration durch Liste
             while (node.getNext() != null) {
@@ -95,8 +95,8 @@ public class AllocLinkedList {
         }
     }
 
-    public Allocation popHead() {
-        Node oldHead = head;
+    public T popHead() {
+        Node<T> oldHead = head;
         removeHead();
         return oldHead.getValue();
     }
@@ -107,8 +107,8 @@ public class AllocLinkedList {
             head = head.getNext();
             size--;
         } else {
-            Node n = head;
-            Node nToDelete;
+            Node<T> n = head;
+            Node<T> nToDelete;
             for (int i = 0; i < index - 1; i++) {
                 // Nodes nach vorne gehen bis Index matcht
                 n = n.getNext();
@@ -123,7 +123,7 @@ public class AllocLinkedList {
         }
     }
 
-    public Node getHead() {
+    public Node<T> getHead() {
         return head;
     }
 
@@ -131,8 +131,8 @@ public class AllocLinkedList {
         return size;
     }
 
-    public boolean contains(Allocation value) {
-        Node node = head;
+    public boolean contains(T value) {
+        Node<T> node = head;
 
         boolean found = false;
         while (node != null) {
@@ -147,7 +147,7 @@ public class AllocLinkedList {
     }
 
     public void show() {
-        Node node = head;
+        Node<T> node = head;
 
         while (node.getNext() != null) {
             System.out.print(node.getValue() + " -> ");

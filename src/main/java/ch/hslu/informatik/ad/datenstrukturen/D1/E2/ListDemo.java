@@ -1,5 +1,9 @@
 package ch.hslu.informatik.ad.datenstrukturen.D1.E2;
 
+import ch.hslu.informatik.ad.einfuehrung.E0.Allocation;
+import ch.hslu.informatik.ad.einfuehrung.E0.Memory;
+import ch.hslu.informatik.ad.einfuehrung.E0.MemorySimple;
+
 public class ListDemo {
 
     public static void main(String[] args) {
@@ -11,7 +15,7 @@ public class ListDemo {
         final Allocation block4 = memory.malloc(128);
         final Allocation block5 = memory.malloc(24);
 
-        AllocLinkedList list = new AllocLinkedList();
+        LinkedList<Allocation> list = new LinkedList<>();
         list.insert(block1);
         list.insert(block2);
         list.insert(block3);

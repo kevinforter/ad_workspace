@@ -8,7 +8,7 @@ public class StackImpl<T> implements Stack<T> {
 
     private int size = 0;
     private int top = 0;
-    private Object[] storage;
+    private final Object[] storage;
 
     public StackImpl(int capacity) {
         this.storage = new Object[capacity];

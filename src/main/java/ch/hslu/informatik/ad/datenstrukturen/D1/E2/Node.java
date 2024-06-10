@@ -1,32 +1,32 @@
 package ch.hslu.informatik.ad.datenstrukturen.D1.E2;
 
-public class Node {
+public class Node<T> {
 
-    private Allocation value;
+    private T value;
 
-    private Node next;
+    private Node<T> next;
 
     public Node() {
     }
 
-    public Node(Allocation value) {
+    public Node(T value) {
         this.value = value;
         this.next = null;
     }
 
-    public Allocation getValue() {
+    public T getValue() {
         return value;
     }
 
-    public void setValue(Allocation value) {
+    public void setValue(T value) {
         this.value = value;
     }
 
-    public Node getNext() {
+    public Node<T> getNext() {
         return next;
     }
 
-    public void setNext(Node next) {
+    public void setNext(Node<T> next) {
         this.next = next;
     }
 }
