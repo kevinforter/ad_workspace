@@ -19,8 +19,8 @@ public class StackImpl<T> implements Stack<T> {
         if (top == 0) {
             throw new EmptyStackException();
         } else {
-            storage[top - 1] = null;
             top--;
+            storage[top] = null;
             size--;
         }
     }
