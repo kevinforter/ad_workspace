@@ -6,6 +6,6 @@ public interface Queue<T> {
     void poll();
     int size();
     boolean isEmpty();
-
     boolean isFull();
+    void clean();
 }

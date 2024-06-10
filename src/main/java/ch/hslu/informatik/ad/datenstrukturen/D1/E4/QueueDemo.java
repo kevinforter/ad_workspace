@@ -29,5 +29,7 @@ public class QueueDemo {
         queue.offer("💣");
         System.out.println(queue);
 
+        queue.clean();
+        System.out.println(queue);
     }
 }

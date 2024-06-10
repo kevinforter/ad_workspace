@@ -6,7 +6,7 @@ public class QueueImpl<T> implements Queue<T> {
 
     private T[] queue;
     private int size;
-    private int tail = 0;
+    private int tail;
     private int head;
 
     public QueueImpl(int capacity) {
@@ -49,6 +49,12 @@ public class QueueImpl<T> implements Queue<T> {
     public boolean isFull() {
         return size() == 8;
 
+    }
+
+    @Override
+    public void clean() {
+        Arrays.fill(queue, null);
+        tail = head = size = 0;
     }
 
     @Override
