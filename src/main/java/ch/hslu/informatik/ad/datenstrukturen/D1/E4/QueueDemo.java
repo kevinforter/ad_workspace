@@ -4,29 +4,29 @@ public class QueueDemo {
 
     public static void main(String[] args) {
 
-        Queue queue = new QueueImpl();
+        Queue<String> queue = new QueueImpl<>(8);
         System.out.println(queue);
 
-        queue.offer('a');
+        queue.offer("🚀");
         System.out.println(queue);
 
-        queue.offer('b');
-        queue.offer('c');
-        queue.offer('d');
-        queue.offer('e');
+        queue.offer("🎸");
+        queue.offer("🇺🇸");
+        queue.offer("🏎️");
+        queue.offer("✈️");
         System.out.println(queue);
 
         queue.poll();
         System.out.println(queue);
 
-        queue.offer('f');
+        queue.offer("☀️");
         System.out.println(queue);
 
-        queue.offer('g');
+        queue.offer("🦊");
         System.out.println(queue);
-        queue.offer('h');
+        queue.offer("🪖");
         System.out.println(queue);
-        queue.offer('i');
+        queue.offer("💣");
         System.out.println(queue);
 
     }

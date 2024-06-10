@@ -2,15 +2,19 @@ package ch.hslu.informatik.ad.datenstrukturen.D1.E4;
 
 import java.util.Arrays;
 
-public class QueueImpl implements Queue {
+public class QueueImpl<T> implements Queue<T> {
 
-    private final char[] queue = new char[8];
+    private T[] queue;
     private int size;
     private int tail = 0;
     private int head;
 
+    public QueueImpl(int capacity) {
+        this.queue = (T[]) new Object[capacity];
+    }
+
     @Override
-    public void offer(char element) {
+    public void offer(T element) {
         if (isFull()) {
             throw new RuntimeException("Queue is full");
         } else {
@@ -25,7 +29,7 @@ public class QueueImpl implements Queue {
         if (isEmpty()) {
             throw new RuntimeException("Queue is empty");
         } else {
-            queue[head] = 0;
+            queue[head] = null;
             head = (head + 1) % 8;
             size--;
         }

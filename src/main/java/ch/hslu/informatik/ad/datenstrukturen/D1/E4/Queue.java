@@ -1,8 +1,8 @@
 package ch.hslu.informatik.ad.datenstrukturen.D1.E4;
 
-public interface Queue {
+public interface Queue<T> {
 
-    void offer(char element);
+    void offer(T element);
     void poll();
     int size();
     boolean isEmpty();
