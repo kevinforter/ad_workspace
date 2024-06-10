@@ -21,5 +21,6 @@ public class StackDemo {
         stack.pop();
         System.out.println("STACK SIZE: " + stack.size());
         System.out.println("TOP OBJ: " + stack.peek());
+        System.out.println(stack);
     }
 }
