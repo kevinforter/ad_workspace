@@ -1,4 +1,4 @@
-package ch.hslu.informatik.ad.datenstrukturen.D1;
+package ch.hslu.informatik.ad.datenstrukturen.D1.E2;
 
 import java.util.Objects;
 

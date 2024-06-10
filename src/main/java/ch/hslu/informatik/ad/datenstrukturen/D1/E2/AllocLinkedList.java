@@ -1,6 +1,4 @@
-package ch.hslu.informatik.ad.datenstrukturen.D1;
-
-import java.util.List;
+package ch.hslu.informatik.ad.datenstrukturen.D1.E2;
 
 public class AllocLinkedList {
 
