@@ -6,4 +6,5 @@ public interface Stack<T> {
     void push(T obj);
     T peek();
     boolean isEmpty();
+    int size();
 }
