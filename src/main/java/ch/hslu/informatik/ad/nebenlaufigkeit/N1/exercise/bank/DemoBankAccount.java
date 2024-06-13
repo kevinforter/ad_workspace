@@ -16,6 +16,9 @@
 package ch.hslu.informatik.ad.nebenlaufigkeit.N1.exercise.bank;
 
 import java.util.ArrayList;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
@@ -51,23 +54,56 @@ public final class DemoBankAccount {
      * @throws InterruptedException wenn Warten unterbrochen wird.
      */
     public static void main(String[] args) throws InterruptedException {
+
         final ArrayList<BankAccount> source = new ArrayList<>();
         final ArrayList<BankAccount> target = new ArrayList<>();
         final int amount = 100_000;
         final int number = 5;
+
         for (int i = 0; i < number; i++) {
             source.add(new BankAccount(amount));
             target.add(new BankAccount());
         }
+
         final Thread[] threads = new Thread[number * 2];
-        for (int i = 0; i < number; i++) {
-            threads[i] = new Thread(new AccountTask(source.get(i), target.get(i), amount));
-            threads[i + number] = new Thread(new AccountTask(target.get(i), source.get(i), amount));
+        final Lock[] locks = new Lock[number * 2];
+        for (int i = 0; i < locks.length; i++) {
+            locks[i] = new ReentrantLock();
         }
+
+        for (int i = 0; i < number; i++) {
+            // Transfer von Source zu Target Konto
+            int finalI = i;
+            threads[i] = new Thread(() -> {
+                synchronized (locks[finalI]) {
+                    try { Thread.sleep(100); } catch (InterruptedException e) {
+                        LOG.info("Error occurred: " + e);
+                    }
+                    synchronized (locks[finalI + 1]) {
+                        new AccountTask(source.get(finalI), target.get(finalI), amount);
+                    }
+                }
+            });
+
+            // Transfer von Target zu Source zurück
+            threads[i + number] = new Thread(() -> {
+                synchronized (locks[finalI]) {
+                    try { Thread.sleep(100); } catch (InterruptedException e) {
+                        LOG.info("Error occurred: " + e);
+                    }
+                    synchronized (locks[finalI + 1]) {
+                        new AccountTask(target.get(finalI), source.get(finalI), amount);
+                    }
+                }
+            });
+        }
+
         for (final Thread thread : threads) {
             thread.start();
         }
+
         waitForCompletion(threads);
+
         LOG.info("Bank accounts after transfers");
         for (int i = 0; i < number; i++) {
             LOG.info("source({}) = {}; target({}) = {};", i, source.get(i).getBalance(), i, target.get(i).getBalance());

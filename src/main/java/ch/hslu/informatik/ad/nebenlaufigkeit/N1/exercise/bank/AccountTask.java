@@ -15,12 +15,16 @@
  */
 package ch.hslu.informatik.ad.nebenlaufigkeit.N1.exercise.bank;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Bankauftrag, der der von einem Quell-Bankkonto einen Betrag an ein Ziel-Bankkonto überweist. Die
  * Überweisung wird in Mircoüberweisungen aufgeteilt.
  */
 public final class AccountTask implements Runnable {
 
+    private static final Logger LOG = LoggerFactory.getLogger(AccountTask.class);
     private final BankAccount source;
     private final BankAccount target;
     private final int amount;
@@ -43,5 +47,4 @@ public final class AccountTask implements Runnable {
             source.transfer(target, 1);
         }
     }
-
 }
