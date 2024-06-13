@@ -9,21 +9,12 @@ public class PerformanceCompareDemo {
 
     public static void main(String[] args) {
 
-        int anzObject = 10000000;
-        long totalArray = 0;
+        int anzObject = 10_000_000;
+        long totalOwnStack = 0;
         long totalStack = 0;
         long totalDeque = 0;
         int iterations = 10;
-        String[] arr = new String[anzObject];
-
-        for (int i = 0; i < iterations; i++) {
-            long start = System.nanoTime();
-
-             arr = PerformanceCompare.returnArray(anzObject);
-
-            long end = System.nanoTime();
-            totalArray += end - start;
-        }
+        String[] arr = ObjectArray.returnArray(anzObject);
 
         for (int i = 0; i < iterations; i++) {
             long start = System.nanoTime();
@@ -37,18 +28,27 @@ public class PerformanceCompareDemo {
         for (int i = 0; i < iterations; i++) {
             long start = System.nanoTime();
 
+            PerformanceCompare.addToOwnStack(arr, anzObject);
+
+            long end = System.nanoTime();
+            totalOwnStack += end - start;
+        }
+
+        for (int i = 0; i < iterations; i++) {
+            long start = System.nanoTime();
+
             PerformanceCompare.addToDeque(arr);
 
             long end = System.nanoTime();
             totalDeque += end - start;
         }
 
-        long averageTimeArray = totalArray / iterations;
-        long averageTimeStack = totalStack / iterations;
-        long averageTimeDeque = totalDeque / iterations;
+        double averageTimeArray = ((double) totalOwnStack / iterations) / 1E9;
+        double averageTimeStack = ((double) totalStack / iterations) / 1E9;
+        double averageTimeDeque = ((double) totalDeque / iterations) / 1E9;
 
-        LOG.info("Durchschnittliche Messzeit für " + iterations + " Durchläufe: " + averageTimeArray);
-        LOG.info("Durchschnittliche Messzeit für " + iterations + " Durchläufe: " + averageTimeStack);
-        LOG.info("Durchschnittliche Messzeit für " + iterations + " Durchläufe: " + averageTimeDeque);
+        LOG.info("Durchschnittliche Messzeit für " + iterations + " Durchläufe (Own Stack): \t" + averageTimeArray + " sek.");
+        LOG.info("Durchschnittliche Messzeit für " + iterations + " Durchläufe (Coll Stack): \t" + averageTimeStack + " sek.");
+        LOG.info("Durchschnittliche Messzeit für " + iterations + " Durchläufe (Deque): \t\t" + averageTimeDeque + " sek.");
     }
 }
