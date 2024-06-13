@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.exercise.n3.count;
+package ch.hslu.informatik.ad.nebenlaufigkeit.N3.exercise.count;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -25,7 +25,7 @@ import org.slf4j.Logger;
  */
 public final class SpeedCount {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ch.hslu.ad.exercise.n3.count.SpeedCount.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SpeedCount.class);
 
     /**
      * Privater Konstruktor.
