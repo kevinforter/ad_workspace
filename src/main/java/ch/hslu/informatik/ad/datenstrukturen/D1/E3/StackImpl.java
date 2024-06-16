@@ -36,6 +36,7 @@ public class StackImpl<T> implements Stack<T> {
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public T peek() {
         return (T) storage[top - 1];
