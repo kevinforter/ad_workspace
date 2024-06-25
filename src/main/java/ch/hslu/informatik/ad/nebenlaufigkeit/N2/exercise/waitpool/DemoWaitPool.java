@@ -15,11 +15,15 @@
  */
 package ch.hslu.informatik.ad.nebenlaufigkeit.N2.exercise.waitpool;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Demonstration eines Wait-Pools.
  */
 public final class DemoWaitPool {
 
+    private static final Logger LOG = LoggerFactory.getLogger(DemoWaitPool.class);
     private static final Object LOCK = new Object();
 
     /**
@@ -30,13 +34,26 @@ public final class DemoWaitPool {
 
     /**
      * Main-Demo.
+     *
      * @param args not used.
      * @throws InterruptedException wenn das warten unterbrochen wird.
      */
-    public static void main(final String args[]) throws InterruptedException {
+    public static void main(final String[] args) throws InterruptedException {
+
         final MyTask waiter = new MyTask(LOCK);
         new Thread(waiter).start();
-        Thread.sleep(1000);
-        LOCK.notify();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            LOG.info("Interrupted while trying to sleep");
+            return;
+        }
+
+        // Die Synchronized Blöcke brauchen den gleichen Lockpool → sonst Deadlock
+        synchronized (LOCK) {
+            LOCK.notifyAll();
+            LOG.info("NotifyAll called");
+        }
     }
 }

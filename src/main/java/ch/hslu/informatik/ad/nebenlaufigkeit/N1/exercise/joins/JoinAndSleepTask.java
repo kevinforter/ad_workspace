@@ -62,7 +62,7 @@ public class JoinAndSleepTask implements Runnable {
         try {
             // Potentially wait for another thread
             if (this.joinFor != null) {
-                LOG.info(taskName + " waiting for thread " + joinFor + " to end");
+                LOG.info(taskName + " waiting for thread [" + joinFor.getName() + "] to end");
                 this.joinFor.join();
             }
         } catch (InterruptedException ex) {

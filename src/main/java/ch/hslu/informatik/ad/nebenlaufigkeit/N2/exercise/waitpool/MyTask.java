@@ -28,6 +28,7 @@ public final class MyTask implements Runnable {
 
     /**
      * Erzeugen einen Task.
+     *
      * @param lock für die Synchronisation
      */
     public MyTask(final Object lock) {
@@ -37,14 +38,15 @@ public final class MyTask implements Runnable {
     @Override
     public void run() {
         LOG.info("warten...");
+        // Gleicher Lockpool wie DemoWaitPool
         synchronized (lock) {
             try {
-                wait();
+                lock.wait();
             } catch (InterruptedException ex) {
-                /* Exception handling... */
+                LOG.info("thread got interrupted while waiting");
                 return;
             }
+            LOG.info("...aufgewacht");
         }
-        LOG.info("...aufgewacht");
     }
 }
