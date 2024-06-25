@@ -18,6 +18,9 @@ package ch.hslu.informatik.ad.nebenlaufigkeit.N2.exercise.latch;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * Eine Rennbahn für das Pferderennen.
  */
@@ -34,14 +37,21 @@ public final class Turf {
 
     /**
      * Main-Demo.
+     *
      * @param args not used.
      */
-    public static void main(final String[] args) {
-        final Synch starterBox = new Latch();
+    public static void main(final String[] args) throws InterruptedException {
+        final CountDownLatch starterBox = new CountDownLatch(1);
+
         for (int i = 1; i <= HORSES; i++) {
-            Thread.startVirtualThread(new RaceHorse(starterBox, "Horse " + i));
+            new Thread(new RaceHorse(starterBox, "Horse " + i)) .start();
         }
-        LOG.info("Start...");
-        starterBox.release();
+        try {
+            Thread.sleep(ThreadLocalRandom.current().nextInt(1000, 5000)); // Kurze Pause vor dem Start des Rennens
+            LOG.info("Start...");
+            starterBox.countDown(); // Startsignal geben
+        } catch (InterruptedException e) {
+            LOG.info("Hauptthread wurde unterbrochen.");
+        }
     }
 }

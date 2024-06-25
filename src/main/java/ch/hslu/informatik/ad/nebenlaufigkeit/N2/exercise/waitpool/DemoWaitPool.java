@@ -43,6 +43,7 @@ public final class DemoWaitPool {
         final MyTask waiter = new MyTask(LOCK);
         new Thread(waiter).start();
 
+        // Sleep immer in try und catch
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {

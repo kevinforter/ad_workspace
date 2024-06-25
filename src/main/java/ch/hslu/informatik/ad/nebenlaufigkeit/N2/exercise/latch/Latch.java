@@ -15,6 +15,9 @@
  */
 package ch.hslu.informatik.ad.nebenlaufigkeit.N2.exercise.latch;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Eine Synchronisationshilfe, die es ermöglicht, einen oder mehrere Threads warten zu lassen, bis
  * diese durch andere Threads aufgeweckt werden. Latches sperren so lange, bis sie einmal ausgelöst
@@ -22,13 +25,19 @@ package ch.hslu.informatik.ad.nebenlaufigkeit.N2.exercise.latch;
  */
 public class Latch implements Synch {
 
+    private static final Logger LOG = LoggerFactory.getLogger(Latch.class);
+    boolean isReleased = true;
+
     @Override
     public void acquire() throws InterruptedException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        while (!isReleased) {
+            wait();
+        }
     }
 
     @Override
     public void release() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       isReleased = true;
+       notifyAll();
     }
 }
