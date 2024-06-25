@@ -32,6 +32,19 @@ public class JoinAndSleep {
      * @throws InterruptedException wenn Warten unterbrochen wird.
      */
     public static void main(String[] args) throws InterruptedException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        final JoinAndSleepTask task3 = new JoinAndSleepTask("task3", 4000);
+        final JoinAndSleepTask task2 = new JoinAndSleepTask("task2", 3000);
+        final JoinAndSleepTask task1 = new JoinAndSleepTask("task1", 2000);
+
+        final Thread thread3 = new Thread(task3, "Task3-Thread3");
+        final Thread thread2 = new Thread(task2, "Task2-Thread2");
+        final Thread thread1 = new Thread(task1, "Task1-Thread1");
+
+        task2.setJoinFor(thread3);
+        task1.setJoinFor(thread2);
+
+        thread1.start();
+        thread2.start();
+        thread3.start();
     }
 }

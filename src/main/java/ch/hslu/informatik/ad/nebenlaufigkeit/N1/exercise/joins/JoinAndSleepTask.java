@@ -31,8 +31,8 @@ public class JoinAndSleepTask implements Runnable {
 
     /**
      * Erzeugt einen Task mit Namen.
-     * 
-     * @param taskName der Name des Tasks.
+     *
+     * @param taskName  der Name des Tasks.
      * @param sleepTime die Zeit in mSec die der Task schläft.
      */
     public JoinAndSleepTask(final String taskName, final int sleepTime) {
@@ -41,12 +41,42 @@ public class JoinAndSleepTask implements Runnable {
         this.sleepTime = sleepTime;
     }
 
+    public JoinAndSleepTask(final String taskName, final int sleepTime, final Thread joinFor) {
+        this.taskName = taskName;
+        this.joinFor = joinFor;
+        this.sleepTime = sleepTime;
+    }
+
+    public void setJoinFor(Thread t) {
+        this.joinFor = t;
+    }
+
     /**
      * Hier wird auf das Ende des fremden Threads gewartet und danach für eine
      * bestimmte Zeit geschlafen. Beide Teile können unterbrochen werden.
      */
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        LOG.info(taskName + " started");
+
+        try {
+            // Potentially wait for another thread
+            if (this.joinFor != null) {
+                LOG.info(taskName + " waiting for thread " + joinFor + " to end");
+                this.joinFor.join();
+            }
+        } catch (InterruptedException ex) {
+            LOG.info(taskName + " got interrupted while waiting on thread");
+        }
+
+        try {
+            LOG.info(taskName + " start sleeping");
+            Thread.sleep(sleepTime);
+            LOG.info(taskName + " done sleeping");
+        } catch (InterruptedException ex) {
+            LOG.info(taskName + " got interrupted while trying to sleep");
+        }
+
+        LOG.info(taskName + " done");
     }
 }
