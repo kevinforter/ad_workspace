@@ -67,6 +67,7 @@ public class JoinAndSleepTask implements Runnable {
             }
         } catch (InterruptedException ex) {
             LOG.info(taskName + " got interrupted while waiting on thread");
+            return;
         }
 
         try {
@@ -75,6 +76,7 @@ public class JoinAndSleepTask implements Runnable {
             LOG.info(taskName + " done sleeping");
         } catch (InterruptedException ex) {
             LOG.info(taskName + " got interrupted while trying to sleep");
+            return;
         }
 
         LOG.info(taskName + " done");
