@@ -15,14 +15,21 @@
  */
 package ch.hslu.informatik.ad.nebenlaufigkeit.N2.exercise.signal;
 
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+
 /**
  * Ein nach oben nicht begrenztes Semaphor, d.h. der Semaphorenzähler kann
  * unendlich wachsen.
  */
 public final class Semaphore {
 
+    private static final Logger LOG = LoggerFactory.getLogger(Semaphore.class);
+
     private int sema; // Semaphorenzähler
     private int count; // Anzahl der wartenden Threads.
+
+    private int limit;
 
     /**
      * Erzeugt ein Semaphore mit 0 Passiersignalen.
@@ -53,8 +60,14 @@ public final class Semaphore {
      * @throws IllegalArgumentException wenn Argumente ungültige Werte besitzen.
      */
     public Semaphore(final int permits, final int limit) throws IllegalArgumentException {
-        this(0);
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (permits < 0 || limit < permits) {
+            LOG.error(permits + " < 0 or " + limit + " < " + permits);
+            throw new IllegalArgumentException(permits + " < 0 or " + limit + " < " + permits);
+        }
+        this.limit = limit;
+        sema = permits;
+        count = 0;
+        LOG.info("Semaphore wurde erstellt");
     }
 
     /**
@@ -84,7 +97,14 @@ public final class Semaphore {
      * wird.
      */
     public synchronized void acquire(final int permits) throws InterruptedException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (permits > 0 && permits <= limit) {
+            LOG.info("Multi acquire gestartet...");
+            for (int i = 0; i < permits; i++) {
+                acquire();
+            }
+        } else {
+            LOG.error(permits + " < 0 or " + limit + " < " + permits);
+        }
     }
 
     /**
@@ -104,7 +124,14 @@ public final class Semaphore {
      * @param permits Anzahl Passiersignale zur Freigabe.
      */
     public synchronized void release(final int permits) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (permits > 0 && permits <= limit) {
+            LOG.info("Multi release gestartet...");
+            for (int i = 0; i <= permits; i++) {
+                release();
+            }
+        } else {
+            LOG.error(permits + " < 0 or " + limit + " < " + permits);
+        }
     }
 
     /**
