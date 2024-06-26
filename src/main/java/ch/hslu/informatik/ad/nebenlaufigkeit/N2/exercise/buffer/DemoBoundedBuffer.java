@@ -74,5 +74,6 @@ public final class DemoBoundedBuffer {
         LOG.info("{} = {}", sumPros, sumCons);
         LOG.info("queue size = {}", queue.size());
         LOG.info("queue empty? {}", queue.empty());
+        LOG.info("queue full? {}", queue.full());
     }
 }
