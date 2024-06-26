@@ -30,7 +30,6 @@ public final class BoundedBuffer<T> implements Buffer<T> {
     private final ArrayDeque<T> queue;
     private final Semaphore putSema;
     private final Semaphore takeSema;
-    private int count;
 
     /**
      * Erzeugt einen Puffer mit bestimmter Kapazität.
@@ -41,7 +40,6 @@ public final class BoundedBuffer<T> implements Buffer<T> {
         queue = new ArrayDeque<>(n);
         putSema = new Semaphore(n);
         takeSema = new Semaphore(0);
-
     }
 
     @Override
@@ -75,7 +73,6 @@ public final class BoundedBuffer<T> implements Buffer<T> {
             queue.addFirst(elem);
         }
         takeSema.release();
-        count++;
         return true;
     }
 
@@ -91,7 +88,6 @@ public final class BoundedBuffer<T> implements Buffer<T> {
             elem = queue.removeLast();
         }
         putSema.release();
-        count--;
         return elem;
     }
 
@@ -105,7 +101,7 @@ public final class BoundedBuffer<T> implements Buffer<T> {
     @Override
     public boolean full() {
         synchronized (queue) {
-            return queue.size() == count;
+            return queue.size() == putSema.availablePermits();
         }
     }
 
